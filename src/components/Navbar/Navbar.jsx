@@ -36,6 +36,7 @@ import { FaUser } from 'react-icons/fa'; // Assuming FaUser is from react-icons
 // Import child components (DesktopNav, MobileNav)
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
+import { FcFilmReel } from 'react-icons/fc';
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -67,14 +68,16 @@ export default function Navbar() {
         />
       </Flex>
       <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Icon as={FcFilmReel} w={8} h={8} marginRight={'10px'} alignSelf={'center'} />
+
         <Text
           // as={RouterLink} // RouterLink bileşenini kullanın
           // to="/" // Anasayfa yoluna yönlendirin
           textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
           fontFamily={'monospace'}
           cursor={'pointer'}
-          fontWeight={'800'}
-          fontSize={'20px'}
+          fontWeight={'900'}
+          fontSize={'25px'}
           color={useColorModeValue('gray.800', 'white')}
           _hover={{
             textDecoration: 'none',
@@ -102,7 +105,7 @@ export default function Navbar() {
           fontWeight={400}
           variant={'link'}
           href={'#'}
-          display={{ base: 'none', md: 'inline-flex' }}
+          display={{ base: 'none', lg: 'inline-flex' }}
         >
           Sign In
         </Button>
@@ -116,7 +119,7 @@ export default function Navbar() {
           _hover={{
             bg: 'pink.300',
           }}
-          display={{ base: 'none', md: 'inline-flex' }}
+          display={{ base: 'none', lg: 'inline-flex' }}
         >
           Sign Up
         </Button>
@@ -127,7 +130,10 @@ export default function Navbar() {
             variant={'link'}
             cursor={'pointer'}
             minW={0}
-            display={{ base: 'inline-flex', md: 'none' }}
+            display={{ base: 'inline-flex', lg: 'none' }}
+            _hover={{
+              color: 'pink.400',
+            }}
           >
             <Icon as={FaUser} w={6} h={6} display={'flex'} alignSelf={'center'}/>
           </MenuButton>
