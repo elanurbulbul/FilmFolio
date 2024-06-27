@@ -78,7 +78,7 @@ export default function Navbar() {
           fontFamily={'monospace'}
           cursor={'pointer'}
           fontWeight={'900'}
-          fontSize={'25px'}
+          fontSize={'21px'}
           color={useColorModeValue('gray.800', 'white')}
           _hover={{
             textDecoration: 'none',
