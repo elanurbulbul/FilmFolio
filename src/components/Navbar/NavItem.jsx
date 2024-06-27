@@ -2,18 +2,18 @@
 export const NAV_ITEMS = [
     {
         label: 'FILMS',
-        href: '#',
+        href: '/films',
     },
     {
         label: 'TV SHOWS',
-        href: '#',
+        href: '/tvshows',
     },
     {
         label: 'WATCH LIST',
-        href: '#',
+        href: '/watchlist',
     },
     {
         label: 'PEOPLE',
-        href: '#',
+        href: '/people',
     },
 ];

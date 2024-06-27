@@ -32,6 +32,7 @@ import {
   SunIcon,
 } from '@chakra-ui/icons';
 import { FaUser } from 'react-icons/fa'; // Assuming FaUser is from react-icons
+import { Link as RouterLink } from 'react-router-dom'; // RouterLink bileşenini import edin
 
 // Import child components (DesktopNav, MobileNav)
 import DesktopNav from './DesktopNav';
@@ -68,8 +69,8 @@ export default function Navbar() {
       </Flex>
       <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
         <Text
-          // as={RouterLink} // RouterLink bileşenini kullanın
-          // to="/" // Anasayfa yoluna yönlendirin
+          as={RouterLink} // RouterLink bileşenini kullanın
+           to="/" // Anasayfa yoluna yönlendirin
           textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
           fontFamily={'monospace'}
           cursor={'pointer'}
