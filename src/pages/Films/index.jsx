@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import List from "./list";
+import { Box } from "@chakra-ui/react";
 
 const Films = () => {
   const [movieList, setMovieList] = useState([]);
+  
   const getMovie = () => {
     fetch(
       "https://api.themoviedb.org/3/discover/movie?api_key=caf0f1e593b52bdbc2ca284e307ccbc3"
@@ -16,17 +19,10 @@ const Films = () => {
   }, []);
 
   return (
-    <div>
-      {movieList.map((movie) => (
-        <img
-          key={movie.id}
-           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-        />
-     
-      ))}
-      0
-    </div>
+    <Box p="4">
+      <List movieList={movieList} />
+    </Box>
   );
 };
+
 export default Films;
