@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import List from "./list";
 import { Box } from "@chakra-ui/react";
 
-const Films = () => {
+const Movies = () => {
   const [movieList, setMovieList] = useState([]);
-  
+
   const getMovie = () => {
     fetch(
       "https://api.themoviedb.org/3/discover/movie?api_key=caf0f1e593b52bdbc2ca284e307ccbc3"
@@ -25,4 +25,4 @@ const Films = () => {
   );
 };
 
-export default Films;
+export default Movies;
