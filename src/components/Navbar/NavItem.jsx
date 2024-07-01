@@ -1,8 +1,8 @@
 // src/components/Navbar/navItems.js
 export const NAV_ITEMS = [
     {
-        label: 'FILMS',
-        href: '/films',
+        label: 'MOVIES',
+        href: '/movies',
     },
     {
         label: 'TV SHOWS',
