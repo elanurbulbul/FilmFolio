@@ -4,9 +4,9 @@ import Homepage from "../../Pages/Homepage";
 import Movies from "../../Pages/Movies/index";
 import People from "../../Pages/People/index";
 import TvShows from "../../Pages/TvShows/index";
-import WatchList from "../../Pages/WatchList/";
+import WatchList from "../../Pages/WatchList";
 
-const RoutePage = () => {
+const RoutesPage = () => {
     return (
       <Routes>
         <Route path="/" exact element={<Homepage/>} />
@@ -18,4 +18,4 @@ const RoutePage = () => {
       </Routes>
     );
   };
-  export default RoutePage;
+  export default RoutesPage;
