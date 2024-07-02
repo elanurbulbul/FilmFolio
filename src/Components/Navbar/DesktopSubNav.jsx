@@ -1,34 +1,37 @@
+
+
 import React from 'react';
 import {
+    // Import necessary components from Chakra UI
     Stack,
     Box,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
     Link,
-    Text,
-    Flex,
-    Icon,
+    MenuList,
+    MenuItem,
     useColorModeValue,
 } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Link as ReactRouterLink } from 'react-router-dom';
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
+
     return (
+
         <Link
-            as={ReactRouterLink}
             href={href}
             role={'group'}
             display={'block'}
             p={2}
             rounded={'md'}
-            _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
-        >
+            _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+
             <Stack direction={'row'} align={'center'}>
                 <Box>
                     <Text
                         transition={'all .3s ease'}
                         _groupHover={{ color: 'pink.400' }}
-                        fontWeight={500}
-                    >
+                        fontWeight={500}>
                         {label}
                     </Text>
                     <Text fontSize={'sm'}>{subLabel}</Text>
@@ -40,13 +43,24 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
                     _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
                     justify={'flex-end'}
                     align={'center'}
-                    flex={1}
-                >
+                    flex={1}>
                     <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
                 </Flex>
             </Stack>
         </Link>
     );
+
 };
 
-export default DesktopSubNav;
+export default DesktopSubNav
+
+
+
+
+
+
+
+
+
+
+

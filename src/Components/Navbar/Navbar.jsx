@@ -105,7 +105,7 @@ export default function Navbar() {
           fontSize={'sm'}
           fontWeight={400}
           variant={'link'}
-          href={'#'}
+          href={'/signIn'}
           display={{ base: 'none', lg: 'inline-flex' }}
         >
           Sign In
@@ -116,7 +116,7 @@ export default function Navbar() {
           fontWeight={600}
           color={'white'}
           bg={'pink.400'}
-          href={'#'}
+          href={'/signUp'}
           _hover={{
             bg: 'pink.300',
           }}
@@ -139,8 +139,8 @@ export default function Navbar() {
             <Icon as={FaUser} w={6} h={6} display={'flex'} alignSelf={'center'}/>
           </MenuButton>
           <MenuList>
-            <MenuItem as={'a'} href={'#'}>Sign In</MenuItem>
-            <MenuItem as={'a'} href={'#'}>Sign Up</MenuItem>
+            <MenuItem as={'a'} href={'/signIn'}>Sign In</MenuItem>
+            <MenuItem as={'a'} href={'/signUp'}>Sign Up</MenuItem>
           </MenuList>
         </Menu>
       </Stack>
