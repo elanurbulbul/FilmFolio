@@ -10,32 +10,36 @@ const Card = ({ movie }) => {
   };
 
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      boxShadow="md"
-      p="4"
-      m="2"
+    <Box 
       display="flex"
       flexDirection="column"
-      justifyContent="center"
-      align="center"
-    >
-      <Box>
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-          borderRadius="md"
-          mb="2"
-        />
-        <Text fontWeight="bold" fontSize="lg" mb={3}>
+      justifyContent="space-between" 
+      borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
+      <Image
+        width="100%"
+        height="auto"
+        borderTopRadius="8px"
+        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        alt={movie.title}
+      />
+      
+  
+      <Box 
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        
+        p="4">
+        <Text  fontWeight="bold" fontSize="lg" mb={4}>
           {movie.title}
         </Text>
+        <Button
+          onClick={handleDetailClick}
+          alignSelf="center"
+        >
+          Detay
+        </Button>
       </Box>
-      <Button onClick={handleDetailClick} alignSelf="center">
-        Detay
-      </Button>
     </Box>
   );
 };

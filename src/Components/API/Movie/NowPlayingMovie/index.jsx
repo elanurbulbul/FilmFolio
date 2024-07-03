@@ -20,7 +20,7 @@ const NowPlayingMovie = () => {
 
   return (
     <Box p="4">
-      <h2>Now Playing Movies</h2>
+      
       <List movieList={movieList} />
     </Box>
   );
