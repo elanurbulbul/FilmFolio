@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Container, Spinner, Stack, VStack } from "@chakra-ui/react";
+import { Box, Container, Spinner, Stack, Flex } from "@chakra-ui/react";
 import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
 import CastList from "./CastList";
@@ -13,9 +13,9 @@ const MovieDetailapi = () => {
   const [movieDetail, setMovieDetail] = useState(null);
 
   const getMovieDetail = () => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=caf0f1e593b52bdbc2ca284e307ccbc3`
-    )
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/movie/${movieId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`
+
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => setMovieDetail(data))
       .catch((err) => console.error("Error fetching movie details:", err));
@@ -39,36 +39,37 @@ const MovieDetailapi = () => {
 
   return (
     <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
-      <Stack
-        direction={{ base: "column-reverse", md: "row" }} // Mobilde column, büyük ekranda row
+      <Box 
+        display="flex"
+        flexDirection={{base:"column-reverse", md:"row"}}
         align={{ base: "center", md: "stretch" }}
         spacing={5}
         mb={8}
       >
-        <Box flex="1" mb={{ base: 5, md: 0 }} alignSelf={"center"}>
+        <Stack flex="1" mb={{ base: 5, md: 0 }} alignSelf={"center"}>
           <MoviePoster
             posterPath={movieDetail.poster_path}
             title={movieDetail.title}
           />
-        </Box>
-        <VStack flex="1" align="stretch">
-          <Box>
+        </Stack>
+        <Stack flex="1" align="stretch">
+          <Stack>
             <MovieHeader
               title={movieDetail.title}
               overview={movieDetail.overview}
             />
             <MovieTrailer trailer={officialTrailer} />
-          </Box>
-          <Box
+          </Stack>
+          <Stack
             flex="1"
             display="flex"
             flexDirection="column"
             justifyContent="flex-end"
           >
             <GenreList genres={movieDetail.genres} />
-          </Box>
-        </VStack>
-      </Stack>
+          </Stack>
+        </Stack>
+      </Box>
       <CastList cast={movieDetail.credits.cast} />
     </Container>
   );

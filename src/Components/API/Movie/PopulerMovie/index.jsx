@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import List from "./list";
+import List from "../../../MovieList/list";
 import { Box } from "@chakra-ui/react";
 
 const PopulerMovie = () => {
   const [movieList, setMovieList] = useState([]);
 
   const getMovie = () => {
+    
     fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=caf0f1e593b52bdbc2ca284e307ccbc3"
-    )
+      `${import.meta.env.VITE_API_BASE_URL}/discover/movie?api_key=${import.meta.env.VITE_API_KEY}`    )
       .then((res) => res.json())
       .then((json) => setMovieList(json.results))
       .catch((error) => console.error("Error fetching movies:", error));
