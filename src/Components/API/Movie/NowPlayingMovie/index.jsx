@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import List from "../../../MovieList/list";
+import List from "../../../MovieCards/list";
 import { Box } from "@chakra-ui/react";
 
 const NowPlayingMovie = () => {
