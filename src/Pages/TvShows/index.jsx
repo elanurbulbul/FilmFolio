@@ -1,8 +1,11 @@
 import React from "react";
+import PopulerTvShow from "../../Components/API/TvShow/PopulerTv";
 
 const TvShows = () => {
   return (
-   <div>tv</div>
+   <>
+   <PopulerTvShow/>
+   </>
   );
 };
 export default TvShows;
