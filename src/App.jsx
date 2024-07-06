@@ -9,15 +9,15 @@ function App() {
 
   return (
     <div className='App'>
-       <Router>
-       <Navbar/>
-       <Route />
-       <Footer/>
-    
+      <Router>
+        <Navbar />
+        <div className="content">
+          <Route />
+        </div>
+        <Footer />
       </Router>
-     
     </div>
   );
 }
 
-export default App
+export default App;
