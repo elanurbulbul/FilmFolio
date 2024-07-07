@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Container, Spinner, Stack, Flex } from "@chakra-ui/react";
+import { Card, Container, Spinner, Stack, Flex } from "@chakra-ui/react";
 import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
-import CastList from "./CastList";
-import GenreList from "./GenreList";
-import MovieTrailer from "./MovieTrailer";
+import CastList from "../../../DetailPageElements/CastList";
+import GenreList from "../../../DetailPageElements/GenreList";
+import Trailer from "../../../DetailPageElements/Trailer";
 import "./index.scss";
 
 const MovieDetailapi = () => {
@@ -39,7 +39,9 @@ const MovieDetailapi = () => {
 
   return (
     <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
-      <Box 
+      <Card 
+        p={2}
+        borderRadius="lg"
         display="flex"
         flexDirection={{base:"column-reverse", md:"row"}}
         align={{ base: "center", md: "stretch" }}
@@ -58,7 +60,7 @@ const MovieDetailapi = () => {
               title={movieDetail.title}
               overview={movieDetail.overview}
             />
-            <MovieTrailer trailer={officialTrailer} />
+            <Trailer trailer={officialTrailer} />
           </Stack>
           <Stack
             flex="1"
@@ -69,7 +71,7 @@ const MovieDetailapi = () => {
             <GenreList genres={movieDetail.genres} />
           </Stack>
         </Stack>
-      </Box>
+      </Card>
       <CastList cast={movieDetail.credits.cast} />
     </Container>
   );
