@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Container, Spinner, Stack } from "@chakra-ui/react";
+import { Text, Box, Card, Container, Spinner, Stack } from "@chakra-ui/react";
 import TVShowHeader from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
 import CastList from "../../../DetailPageElements/CastList";
@@ -38,7 +38,9 @@ const TvShowDetailapi = () => {
 
   return (
     <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
-      <Box
+      <Card 
+        p={2}
+        borderRadius="lg"
         display="flex"
         flexDirection={{ base: "column-reverse", md: "row" }}
         align={{ base: "center", md: "stretch" }}
@@ -56,6 +58,8 @@ const TvShowDetailapi = () => {
             <TVShowHeader
               name={tvShowDetail.name}
               overview={tvShowDetail.overview}
+              seasons={tvShowDetail.number_of_seasons}
+              episodes={tvShowDetail.number_of_episodes}
             />
             <Trailer trailer={officialTrailer} />
           </Stack>
@@ -68,7 +72,7 @@ const TvShowDetailapi = () => {
             <GenreList genres={tvShowDetail.genres} />
           </Stack>
         </Stack>
-      </Box>
+      </Card>
       <CastList cast={tvShowDetail.credits.cast} />
     </Container>
   );
