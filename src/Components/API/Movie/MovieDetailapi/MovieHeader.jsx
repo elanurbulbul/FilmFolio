@@ -6,7 +6,7 @@ const MovieHeader = ({ title, overview }) => (
     <Heading as="h1" size="xl" my={4}>
       {title}
     </Heading>
-    <Text fontSize="lg" >
+    <Text fontSize="lg"  >
       {overview}
     </Text>
   </>

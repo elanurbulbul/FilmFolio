@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Box, Image, Text, Button, Stack, Flex, Tooltip } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
@@ -6,19 +6,33 @@ import { StarIcon } from "@chakra-ui/icons";
 
 const Card = ({ movie }) => {
   const navigate = useNavigate();
+  const textRef = useRef(null);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleDetailClick = () => {
     navigate(`/movies/${movie.id}`);
   };
 
   const releaseYear = format(new Date(movie.release_date), 'yyyy');
-  
+
+  // Check if text is overflowing
+  useEffect(() => {
+    if (textRef.current) {
+      setIsTooltipVisible(textRef.current.scrollWidth > textRef.current.clientWidth);
+    }
+  }, [movie.title]);
+
   return (
     <Box 
       display="flex"
       flexDirection="column"
       justifyContent="space-between" 
-      borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
+      borderWidth="1px" 
+      borderRadius="lg" 
+      overflow="hidden" 
+      boxShadow="md"
+    >
       <Image
         width="100%"
         borderTopRadius="8px"
@@ -30,23 +44,33 @@ const Card = ({ movie }) => {
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
-        p="4">
-        <Tooltip label={movie.title} aria-label="Title Tooltip">
+        p="4"
+      >
+        <Tooltip 
+          label={movie.title} 
+          aria-label="Title Tooltip"
+          isOpen={isTooltipVisible && isHovered}
+          hasArrow
+        >
           <Text  
+            ref={textRef}
             fontWeight="bold" 
             fontSize="lg" 
             mb={4} 
             overflow="hidden" 
             textOverflow="ellipsis" 
-            whiteSpace="nowrap">
+            whiteSpace="nowrap"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             {movie.title}
           </Text>
         </Tooltip>
-        <Flex justify="space-between" mb={3} >
+        <Flex justify="space-between" mb={3}>
           <Stack spacing={1}>
             <Text fontSize="md">{releaseYear}</Text>
           </Stack>
-          <Stack display="flex" direction="row" spacing={1} >
+          <Stack display="flex" direction="row" spacing={1}>
             <Tooltip label={`${movie.vote_average.toFixed(2)} / 10`} aria-label="Rating Tooltip">
               <Flex align="center">
                 <StarIcon color="yellow.400" boxSize="1rem" />
