@@ -1,8 +1,9 @@
 import React from "react";
+import PopularPerson from "../../Components/API/Person/PopularPerson"
 
 const People = () => {
   return (
-   <div>poppp</div>
+    <PopularPerson/>
   );
 };
 export default People;
