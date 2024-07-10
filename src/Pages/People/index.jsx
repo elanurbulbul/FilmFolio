@@ -1,9 +1,9 @@
 import React from "react";
-import PopularPerson from "../../Components/API/Person/PopularPerson"
+import PopularPeople from "../../Components/API/Person/PopularPeople"
 
 const People = () => {
   return (
-    <PopularPerson/>
+    <PopularPeople/>
   );
 };
 export default People;
