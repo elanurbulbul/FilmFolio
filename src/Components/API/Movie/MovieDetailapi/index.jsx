@@ -28,7 +28,13 @@ const MovieDetailapi = () => {
   if (!movieDetail) {
     return (
       <Container centerContent>
-        <Spinner />
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="gray.400"
+          size="xl"
+        />
       </Container>
     );
   }
