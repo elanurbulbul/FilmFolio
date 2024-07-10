@@ -1,29 +1,43 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../TvShowCards/list";
-import { Box } from "@chakra-ui/react";
+import { Box, Spinner, Center } from "@chakra-ui/react";
 
 const PopulerTvShow = () => {
   const [tvList, setTvList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   const getTv = () => {
-    
     fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/discover/tv?api_key=${import.meta.env.VITE_API_KEY}`)
+      `${import.meta.env.VITE_API_BASE_URL}/tv/popular?api_key=${import.meta.env.VITE_API_KEY}`
+    )
       .then((res) => res.json())
-      .then((json) => setTvList(json.results))
-      .catch((error) => console.error("Error fetching movies:", error));
+      .then((json) => {
+        setTvList(json.results);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching TV shows:", error);
+        setLoading(false);
+      });
   };
-
 
   useEffect(() => {
     getTv();
   }, []);
 
+  
   return (
     <Box p="4">
-     <List tvList={tvList} /> 
+      {loading ? (
+        <Center>
+          <Spinner size="xl" />
+        </Center>
+      ) : (
+        <List tvList={tvList} />
+      )}
     </Box>
-  );
+    );
 };
 
 export default PopulerTvShow;

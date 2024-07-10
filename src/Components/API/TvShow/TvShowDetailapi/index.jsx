@@ -12,7 +12,11 @@ const TvShowDetailapi = () => {
   const [tvShowDetail, setTvShowDetail] = useState(null);
 
   const getTvShowDetail = () => {
-    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
+    const apiUrl = `${
+      import.meta.env.VITE_API_BASE_URL
+    }/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${
+      import.meta.env.VITE_API_KEY
+    }`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -27,7 +31,13 @@ const TvShowDetailapi = () => {
   if (!tvShowDetail) {
     return (
       <Container centerContent>
-        <Spinner />
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="gray.400"
+          size="xl"
+        />
       </Container>
     );
   }
@@ -38,7 +48,7 @@ const TvShowDetailapi = () => {
 
   return (
     <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
-      <Card 
+      <Card
         p={2}
         borderRadius="lg"
         display="flex"
