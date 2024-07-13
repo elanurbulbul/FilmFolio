@@ -44,7 +44,7 @@ export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box>
+    <Box zIndex={10} position="relative">
     <Flex
       bg={useColorModeValue('white', 'gray.800')}
       color={useColorModeValue('gray.600', 'white')}
@@ -107,6 +107,9 @@ export default function Navbar() {
           variant={'link'}
           href={'/signIn'}
           display={{ base: 'none', lg: 'inline-flex' }}
+          _hover={{
+            textDecoration:"none",
+          }}
         >
           Sign In
         </Button>
