@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Box, Image, Spinner } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
+import SearchList from "../../../AllCards/SearchResultCards/list"; // `MultiSearchList` bileşeninin doğru yolunu belirleyin
 
 const MultiSearch = ({ searchTerm }) => {
   const [multiSearch, setMultiSearch] = useState([]);
@@ -27,25 +28,26 @@ const MultiSearch = ({ searchTerm }) => {
   }, [searchTerm]);
 
   if (loading) {
-    return <div><Spinner/></div>;
+    return <div><Spinner /></div>;
   }
 
+  const sortedResults = multiSearch.reduce((acc, item) => {
+    if (item.media_type === "movie") {
+      acc.movies.push(item);
+    } else if (item.media_type === "tv") {
+      acc.tvShows.push(item);
+    } else if (item.media_type === "person") {
+      acc.people.push(item);
+    }
+    return acc;
+  }, { movies: [], tvShows: [], people: [] });
+
   return (
-    <div>
-      {multiSearch.length > 0 ? (
-        <Box>
-          {multiSearch.map((item) => (
-            <li key={item.id}>
-                <Image src={`https://image.tmdb.org/t/p/w500${item.poster_path  || item.profile_path}`}/>
-                {item.name || item.title}
-                <p>{item.media_type}</p>
-                </li>
-          ))}
-        </Box>
-      ) : (
-        <div>No results found for "{searchTerm}".</div>
-      )}
-    </div>
+    <SearchList 
+      movies={sortedResults.movies}
+      tvShows={sortedResults.tvShows}
+      people={sortedResults.people}
+    />
   );
 };
 

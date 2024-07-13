@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import List from "../../../MovieCards/list";
+import List from "../../../AllCards/MovieCards/list";
 import { Box, Spinner, Center } from "@chakra-ui/react";
 
 const PopulerMovie = () => {
