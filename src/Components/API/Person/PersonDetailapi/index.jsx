@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Image, Spinner, Stack, Text, Box, Heading } from "@chakra-ui/react";
 
 const PersonDetailapi = () => {
   const { personId } = useParams();
+  const navigate = useNavigate();
   const [personDetail, setPersonDetail] = useState(null);
 
   const getPersonDetail = () => {
@@ -27,34 +28,56 @@ const PersonDetailapi = () => {
     );
   }
 
+  const handleCreditClick = (cast) => {
+    if (cast.title) {
+      navigate(`/movies/${cast.id}`);
+    } else if (cast.name) {
+      navigate(`/tvshows/${cast.id}`);
+    }
+  };
+
   const genderText = personDetail.gender === 1 ? "woman" : personDetail.gender === 2 ? "man" : "unknown";
 
   return (
     <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
-      <Image 
-        src={`https://image.tmdb.org/t/p/w500${personDetail.profile_path}`}
-        alt={personDetail.name} 
-      />
+      {personDetail.profile_path ? (
+        <Image
+          src={`https://image.tmdb.org/t/p/w500${personDetail.profile_path}`}
+          alt={personDetail.name}
+        />
+      ) : (
+        <Text>No photo available</Text>
+      )}
       <Text>{personDetail.name}</Text>
       <Text>{personDetail.biography}</Text>
       <Text>{genderText}</Text>
       <Text>{personDetail.birthday}</Text>
       <Text>{personDetail.place_of_birth}</Text>
-      
-     
-      
+
       <Box mt={8}>
         <Heading size="lg">Credits</Heading>
         <Stack direction="column" mt={4} spacing={4}>
           {personDetail.credits.cast.map((cast, index) => (
-            <Box key={index} p={4} borderWidth={1} borderRadius="lg">
-              <Image 
-                boxSize="100px"
-                src={`https://image.tmdb.org/t/p/w500${cast.poster_path}`}
-                alt={cast.title} 
-                mb={2}
-              />
-              <Text fontWeight="bold">{cast.title}</Text>
+            <Box
+              key={index}
+              p={4}
+              borderWidth={1}
+              borderRadius="lg"
+              onClick={() => handleCreditClick(cast)}
+              cursor="pointer"
+              _hover={{ bg: "gray.200" }}
+            >
+              {cast.poster_path ? (
+                <Image
+                  boxSize="100px"
+                  src={`https://image.tmdb.org/t/p/w500${cast.poster_path}`}
+                  alt={cast.title || cast.name}
+                  mb={2}
+                />
+              ) : (
+                <Text>No photo available</Text>
+              )}
+              <Text fontWeight="bold">{cast.title || cast.name}</Text>
               <Text>{cast.character}</Text>
               <Text>{cast.release_date}</Text>
               <Text>{cast.overview}</Text>
