@@ -1,7 +1,7 @@
 import { Heading, Box, Flex, Button, Spinner, Container, useBreakpointValue, IconButton } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import React, { useEffect, useState } from "react";
-import List from "../../../PersonCards/list";
+import List from "../../../AllCards/PersonCards/list";
 import Pagination from "../../../Pagination"
 
 const PopulerPeople = () => {
