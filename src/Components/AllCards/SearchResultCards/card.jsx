@@ -15,6 +15,8 @@ const Card = ({ item, mediaType }) => {
     }
   };
 
+  const imagePath = item.poster_path || item.profile_path;
+
   return (
     <Box
       display="flex"
@@ -28,12 +30,28 @@ const Card = ({ item, mediaType }) => {
       p={4}
       width="100%"
     >
-      <Image
-        width="100%"
-        borderTopRadius="8px"
-        src={`https://image.tmdb.org/t/p/w500${item.poster_path || item.profile_path}`}
-        alt={item.name || item.title}
-      />
+      {imagePath ? (
+        <Image
+          width="100%"
+          borderTopRadius="8px"
+          src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+          alt={item.name || item.title}
+        />
+      ) : (
+        <Box
+          width="100%"
+          height="350px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          bg="gray.300"
+          borderTopRadius="8px"
+        >
+          <Text fontSize="lg" color="gray.600">
+            No photo!
+          </Text>
+        </Box>
+      )}
       <Box
         display="flex"
         flexDirection="column"
