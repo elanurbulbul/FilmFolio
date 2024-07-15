@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import List from "../../../TvShowCards/list";
+import List from "../../../AllCards/TvShowCards/list";
 import { Box, Spinner, Center } from "@chakra-ui/react";
 
 const PopulerTvShow = () => {
