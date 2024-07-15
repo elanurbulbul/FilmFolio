@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Image, Spinner, Stack, Text, Box, Heading } from "@chakra-ui/react";
+import { Container, Image, Spinner, Stack, Text, Box, Heading, SimpleGrid, Flex } from "@chakra-ui/react";
 
 const PersonDetailapi = () => {
   const { personId } = useParams();
@@ -56,9 +56,13 @@ const PersonDetailapi = () => {
 
       <Box mt={8}>
         <Heading size="lg">Credits</Heading>
-        <Stack direction="column" mt={4} spacing={4}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }}  mt={4} spacing={4}>
           {personDetail.credits.cast.map((cast, index) => (
-            <Box
+            <Flex
+          
+              align="center"
+              direction="column"
+              textAlign="center"
               key={index}
               p={4}
               borderWidth={1}
@@ -68,22 +72,25 @@ const PersonDetailapi = () => {
               _hover={{ bg: "gray.200" }}
             >
               {cast.poster_path ? (
+              
                 <Image
-                  boxSize="100px"
+                alignItems="center"
+                justifyContent="center"
+                  boxSize="200px"
                   src={`https://image.tmdb.org/t/p/w500${cast.poster_path}`}
                   alt={cast.title || cast.name}
                   mb={2}
                 />
               ) : (
-                <Text>No photo available</Text>
+                <Text border="1px" px={8} py={20} mb={2} >No photo available</Text>
               )}
               <Text fontWeight="bold">{cast.title || cast.name}</Text>
               <Text>{cast.character}</Text>
               <Text>{cast.release_date}</Text>
               <Text>{cast.overview}</Text>
-            </Box>
+            </Flex>
           ))}
-        </Stack>
+        </SimpleGrid>
       </Box>
     </Container>
   );
