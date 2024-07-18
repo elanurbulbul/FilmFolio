@@ -24,12 +24,14 @@ const Card = ({ tv }) => {
   }, [tv.name]);
   return (
     <Box 
+    
       display="flex"
       flexDirection="column"
       justifyContent="space-between" 
       borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
       <Image
         width="100%"
+        height="400px"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}
         alt={tv.name}

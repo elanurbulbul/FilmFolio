@@ -16,6 +16,27 @@ const SwiperComponent = ({ initialTvList }) => {
     setTvList(initialTvList || []);
   }, [initialTvList]);
 
+  const prepend = () => {
+    const newSlides = [
+      ...tvList.slice(prependNumber.current - 2, prependNumber.current),
+      ...tvList,
+    ];
+    prependNumber.current -= 2;
+    setTvList(newSlides);
+    swiperRef.slideTo(swiperRef.activeIndex + 2, 0);
+  };
+
+  const append = () => {
+    const newSlides = [
+      ...tvList,
+      ...tvList.slice(0, 2).map((_, i) => ({ ...tvList[i], id: appendNumber.current++ }))
+    ];
+    setTvList(newSlides);
+  };
+
+  const slideTo = (index) => {
+    swiperRef.slideTo(index - 1, 0);
+  };
   return (
     <>
       <Swiper

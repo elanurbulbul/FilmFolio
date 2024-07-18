@@ -35,6 +35,7 @@ const Card = ({ movie }) => {
     >
       <Image
         width="100%"
+        height="400px"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}

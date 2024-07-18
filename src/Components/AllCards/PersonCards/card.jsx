@@ -31,6 +31,7 @@ const Card = ({ person }) => {
       boxShadow="md"
     >
       <Image
+      height="400px"
         width="100%"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
