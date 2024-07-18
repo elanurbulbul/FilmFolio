@@ -71,7 +71,7 @@ const TvShowDetailapi = () => {
               seasons={tvShowDetail.number_of_seasons}
               episodes={tvShowDetail.number_of_episodes}
             />
-            <Trailer trailer={officialTrailer} />
+            <Trailer name={tvShowDetail.name} trailer={officialTrailer} />
           </Stack>
           <Stack
             flex="1"

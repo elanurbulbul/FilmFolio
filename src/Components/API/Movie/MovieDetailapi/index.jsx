@@ -66,7 +66,7 @@ const MovieDetailapi = () => {
               title={movieDetail.title}
               overview={movieDetail.overview}
             />
-            <Trailer trailer={officialTrailer} />
+            <Trailer title={movieDetail.title} trailer={officialTrailer} />
           </Stack>
           <Stack
             flex="1"
