@@ -29,6 +29,11 @@ const Card = ({ person }) => {
       borderRadius="lg"
       overflow="hidden"
       boxShadow="md"
+      onClick={handleDetailClick}
+      cursor="pointer"
+      transition="transform 0.2s"
+      _hover={{ 
+        transform: "scale(1.05)"}}
     >
       <Image
       height="400px"
@@ -67,9 +72,7 @@ const Card = ({ person }) => {
         <Text mb={3} fontSize="md" as="samp" opacity="0.7">
           {person.known_for_department}
         </Text>
-        <Button onClick={handleDetailClick} alignSelf="center">
-          Detay
-        </Button>
+      
       </Box>
     </Box>
   );
