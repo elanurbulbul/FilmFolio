@@ -24,15 +24,24 @@ const Card = ({ tv }) => {
   }, [tv.name]);
   return (
     <Box 
-    
+      
       display="flex"
       flexDirection="column"
       justifyContent="space-between" 
-      borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
+      borderWidth="1px" 
+      borderRadius="lg" 
+      boxShadow="md"
+      onClick={handleDetailClick}
+      cursor="pointer"
+      transition="transform 0.2s"
+      _hover={{ 
+        transform: "scale(1.05)",
+      }}>
       <Image
         width="100%"
-        height="400px"
+        height="430px"
         borderTopRadius="8px"
+        marginBottom="5px"
         src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}
         alt={tv.name}
       />
@@ -52,7 +61,7 @@ const Card = ({ tv }) => {
             ref={textRef}
             fontWeight="bold" 
             fontSize="lg" 
-            mb={4} 
+            m="8px" 
             overflow="hidden" 
             textOverflow="ellipsis" 
             whiteSpace="nowrap"
@@ -62,7 +71,7 @@ const Card = ({ tv }) => {
             {tv.name}
           </Text>
         </Tooltip>
-        <Flex justify="space-between" mb={3}>
+        <Flex justify="space-between" my={3}>
           <Stack spacing={1}>
             <Text fontSize="md">{releaseYear}</Text>
           </Stack>
@@ -76,12 +85,6 @@ const Card = ({ tv }) => {
           </Stack>
         </Flex>
        
-        <Button
-          onClick={handleDetailClick}
-          alignSelf="center"
-        >
-          Detay
-        </Button>
       </Box>
     </Box>
   );

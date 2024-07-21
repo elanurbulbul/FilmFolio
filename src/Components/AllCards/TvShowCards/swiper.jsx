@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Virtual, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import Card from './card';
+import React, { useRef, useState, useEffect } from "react";
+import { Stack} from "@chakra-ui/react";
+import { Virtual, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Card from "./card";
 
 const SwiperComponent = ({ initialTvList }) => {
   const [tvList, setTvList] = useState(initialTvList || []);
@@ -29,7 +30,9 @@ const SwiperComponent = ({ initialTvList }) => {
   const append = () => {
     const newSlides = [
       ...tvList,
-      ...tvList.slice(0, 2).map((_, i) => ({ ...tvList[i], id: appendNumber.current++ }))
+      ...tvList
+        .slice(0, 2)
+        .map((_, i) => ({ ...tvList[i], id: appendNumber.current++ })),
     ];
     setTvList(newSlides);
   };
@@ -73,7 +76,9 @@ const SwiperComponent = ({ initialTvList }) => {
       >
         {tvList.map((tv, index) => (
           <SwiperSlide key={tv.id} virtualIndex={index}>
-            <Card tv={tv} />
+            <Stack py="20px">
+              <Card tv={tv} />
+            </Stack>
           </SwiperSlide>
         ))}
       </Swiper>
