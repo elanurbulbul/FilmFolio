@@ -1,10 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Virtual, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import Card from './card';
+import React, { useRef, useState, useEffect } from "react";
+import { Stack } from "@chakra-ui/react";
+import { Virtual, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Card from "./card";
 
 const SwiperComponent = ({ initialMovieList }) => {
   const [movieList, setMovieList] = useState(initialMovieList);
@@ -29,7 +30,9 @@ const SwiperComponent = ({ initialMovieList }) => {
   const append = () => {
     const newSlides = [
       ...movieList,
-      ...movieList.slice(0, 2).map((_, i) => ({ ...movieList[i], id: appendNumber.current++ }))
+      ...movieList
+        .slice(0, 2)
+        .map((_, i) => ({ ...movieList[i], id: appendNumber.current++ })),
     ];
     setMovieList(newSlides);
   };
@@ -46,7 +49,6 @@ const SwiperComponent = ({ initialMovieList }) => {
         slidesPerView={5}
         initialSlide={0} // Start from the first slide
         spaceBetween={30}
-        
         navigation={true}
         loop={true} // Enable continuous loop mode
         virtual
@@ -75,7 +77,9 @@ const SwiperComponent = ({ initialMovieList }) => {
       >
         {movieList.map((movie, index) => (
           <SwiperSlide key={movie.id} virtualIndex={index}>
-            <Card movie={movie} />
+            <Stack py="20px">
+              <Card movie={movie} />
+            </Stack>
           </SwiperSlide>
         ))}
       </Swiper>

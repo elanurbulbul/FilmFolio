@@ -32,6 +32,9 @@ const Card = ({ movie }) => {
       borderRadius="lg" 
       overflow="hidden" 
       boxShadow="md"
+      onClick={handleDetailClick}
+      cursor="pointer"
+      
     >
       <Image
         width="100%"
@@ -81,12 +84,7 @@ const Card = ({ movie }) => {
           </Stack>
         </Flex>
        
-        <Button
-          onClick={handleDetailClick}
-          alignSelf="center"
-        >
-          Detay
-        </Button>
+      
       </Box>
     </Box>
   );
