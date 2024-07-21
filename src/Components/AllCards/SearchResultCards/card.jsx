@@ -29,6 +29,12 @@ const Card = ({ item, mediaType }) => {
       mb={4}
       p={4}
       width="100%"
+      onClick={handleDetailClick}
+      cursor="pointer"
+      transition="transform 0.2s"
+      _hover={{ 
+        transform: "scale(1.05)",
+      }}
     >
       {imagePath ? (
         <Image
@@ -71,9 +77,7 @@ const Card = ({ item, mediaType }) => {
         <Text mb={3} fontSize="md" as="samp" opacity="0.7">
           {item.media_type}
         </Text>
-        <Button onClick={handleDetailClick} alignSelf="center">
-          Details
-        </Button>
+       
       </Box>
     </Box>
   );
