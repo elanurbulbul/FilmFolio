@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, Image, Text, Button, Flex, Tooltip } from "@chakra-ui/react";
+import { Box, Image, Text, Tooltip } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ person }) => {
+const PersonCard = ({ person }) => {
   const navigate = useNavigate();
   const textRef = useRef(null);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
@@ -14,9 +14,7 @@ const Card = ({ person }) => {
 
   useEffect(() => {
     if (textRef.current) {
-      setIsTooltipVisible(
-        textRef.current.scrollWidth > textRef.current.clientWidth
-      );
+      setIsTooltipVisible(textRef.current.scrollWidth > textRef.current.clientWidth);
     }
   }, [person.name]);
 
@@ -32,11 +30,10 @@ const Card = ({ person }) => {
       onClick={handleDetailClick}
       cursor="pointer"
       transition="transform 0.2s"
-      _hover={{ 
-        transform: "scale(1.05)"}}
+      _hover={{ transform: "scale(1.05)" }}
     >
       <Image
-      height="400px"
+        height="430px"
         width="100%"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
@@ -72,10 +69,9 @@ const Card = ({ person }) => {
         <Text mb={3} fontSize="md" as="samp" opacity="0.7">
           {person.known_for_department}
         </Text>
-      
       </Box>
     </Box>
   );
 };
 
-export default Card;
+export default PersonCard;
