@@ -1,29 +1,53 @@
-import { Button, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-import MultiSearch from "../../Components/API/Search/MultiSearch";
+import { Button, Input, Box, useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import DailyTrend from "../../Components/API/Trending/DailyTrend";
+
 
 const Homepage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [submittedTerm, setSubmittedTerm] = useState("");
+  const navigate = useNavigate();
+  const toast = useToast();
+
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
   const handleSearch = () => {
-    setSubmittedTerm(searchTerm); 
+    if (searchTerm.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    } else {
+      toast({
+        position: 'top',
+        containerStyle: {
+          width: '800px',
+          maxWidth: '100%',
+        },
+        title: "Please enter a search term.",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
+  
 
   return (
-    <div>
+    <>
+    <Box>
       <Input
         placeholder="Search..."
         value={searchTerm}
         onChange={handleInputChange}
+        mb="4"
       />
-      <Button onClick={handleSearch}>Search</Button>
-      {submittedTerm && <MultiSearch searchTerm={submittedTerm} />}
-    </div>
+      <Button onClick={handleSearch} colorScheme="blue">
+        Search
+      </Button>
+
+    </Box>
+    </>
   );
 };
 
