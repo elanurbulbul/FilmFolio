@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input, Box, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import DailyTrend from "../../Components/API/Trending/DailyTrend";
 
 
 const Homepage = () => {
