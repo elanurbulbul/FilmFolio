@@ -34,9 +34,10 @@ const TvCard = ({ tv }) => {
       cursor="pointer"
       transition="transform 0.2s"
       _hover={{ transform: "scale(1.05)" }}
+      maxWidth="400px"
     >
       <Image
-        width="100%"
+        width="100vw"
         height="430px"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}

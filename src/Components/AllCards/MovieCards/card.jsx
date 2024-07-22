@@ -37,7 +37,7 @@ const MovieCard = ({ movie }) => {
       _hover={{ transform: "scale(1.05)" }}
     >
       <Image
-        width="100%"
+        width="100vw"
         height="430px"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

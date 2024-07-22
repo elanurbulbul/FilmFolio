@@ -47,10 +47,10 @@ const SwiperComponent = ({ initialMovieList }) => {
         modules={[Virtual, Navigation, Pagination]}
         onSwiper={setSwiperRef}
         slidesPerView={5}
-        initialSlide={0} 
-        spaceBetween={30}
+        initialSlide={0}
+        spaceBetween={20}
         navigation={true}
-        loop={true} 
+        loop={true}
         virtual
         breakpoints={{
           320: {
@@ -59,19 +59,19 @@ const SwiperComponent = ({ initialMovieList }) => {
           },
           480: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 15,
           },
           640: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 20,
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 40,
+            spaceBetween: 25,
           },
           1280: {
             slidesPerView: 5,
-            spaceBetween: 50,
+            spaceBetween: 30,
           },
         }}
       >
