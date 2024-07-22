@@ -1,8 +1,8 @@
 import React from 'react';
 import SwiperComponent from './swiper';
 
-const List = ({ tvList }) => {
+const TvList = ({ tvList }) => {
   return <SwiperComponent initialTvList={tvList} />;
 };
 
-export default List;
+export default TvList;

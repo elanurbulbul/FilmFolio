@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Card from "./card";
+import TvCard from "./card";
 
 const SwiperComponent = ({ initialTvList }) => {
   const [tvList, setTvList] = useState(initialTvList || []);
@@ -77,7 +78,7 @@ const SwiperComponent = ({ initialTvList }) => {
         {tvList.map((tv, index) => (
           <SwiperSlide key={tv.id} virtualIndex={index}>
             <Stack py="20px">
-              <Card tv={tv} />
+              <TvCard tv={tv} />
             </Stack>
           </SwiperSlide>
         ))}

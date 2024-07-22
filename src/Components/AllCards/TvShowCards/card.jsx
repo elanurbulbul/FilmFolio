@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
 import { StarIcon } from "@chakra-ui/icons";
 
-const TVCard = ({ tv }) => {
+const TvCard = ({ tv }) => {
   const navigate = useNavigate();
   const textRef = useRef(null);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
@@ -83,4 +83,4 @@ const TVCard = ({ tv }) => {
   );
 };
 
-export default TVCard;
+export default TvCard;
