@@ -29,7 +29,7 @@ const TopRated = () => {
   }, []);
 
   return (
-    <Box p="4">
+    <Box p="3">
       {loading ? (
         <Center>
           <Spinner size="xl" />

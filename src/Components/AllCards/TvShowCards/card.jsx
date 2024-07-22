@@ -33,8 +33,9 @@ const TvCard = ({ tv }) => {
       onClick={handleDetailClick}
       cursor="pointer"
       transition="transform 0.2s"
-      _hover={{ transform: "scale(1.05)" }}
-      maxWidth="400px"
+      _hover={{ transform: "scale(1.05)", 
+        mx:"6px" 
+      }}
     >
       <Image
         width="100vw"
