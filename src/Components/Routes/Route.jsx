@@ -8,6 +8,7 @@ import WatchList from "../../Pages/WatchList";
 import MoviesDetail from "../../Pages/MoviesDetail";
 import TvShowDetail from "../../Pages/TvShowsDetail";
 import PersonDetail from "../../Pages/PersonDetail"
+import SearchPage from "../../Pages/SearchPage";
 
 
 const RoutePage = () => {
@@ -22,6 +23,7 @@ const RoutePage = () => {
         <Route path="/movies/:movieId" element={<MoviesDetail/>} />
         <Route path="/tvshows/:tvId" element={<TvShowDetail/>} />
         <Route path="/people/:personId" element={<PersonDetail/>} />
+        <Route path="/search" element={<SearchPage />} />
 
       </Routes>
     );

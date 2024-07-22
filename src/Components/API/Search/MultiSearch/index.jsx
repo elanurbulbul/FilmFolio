@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Spinner } from "@chakra-ui/react";
-import SearchList from "../../../AllCards/SearchResultCards/list"; // `MultiSearchList` bileşeninin doğru yolunu belirleyin
+import { Spinner, Box, Text, Stack,SimpleGrid } from "@chakra-ui/react";
+import MovieCard from "../../../AllCards/MovieCards/card";
+import TvCard from "../../../AllCards/TvShowCards/card";
+import PersonCard from "../../../AllCards/PersonCards/card";
 
 const MultiSearch = ({ searchTerm }) => {
   const [multiSearch, setMultiSearch] = useState([]);
@@ -43,11 +45,40 @@ const MultiSearch = ({ searchTerm }) => {
   }, { movies: [], tvShows: [], people: [] });
 
   return (
-    <SearchList 
-      movies={sortedResults.movies}
-      tvShows={sortedResults.tvShows}
-      people={sortedResults.people}
-    />
+    <Box p={4}>
+      {sortedResults.movies.length > 0 && (
+        <Box mb={6}>
+          <Text fontSize="2xl" fontWeight="bold" mb={4}>Movies</Text>
+          <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 5 }} spacing={4}>
+          {sortedResults.movies.map(movie => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </SimpleGrid>
+          
+        </Box>
+      )}
+      {sortedResults.tvShows.length > 0 && (
+        <Box mb={6}>
+          <Text fontSize="2xl" fontWeight="bold" mb={4}>TV Shows</Text>
+          <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 5 }} spacing={4}>
+          {sortedResults.tvShows.map(tv => (
+              <TvCard key={tv.id} tv={tv} />
+            ))}
+          </SimpleGrid>
+          
+        </Box>
+      )}
+      {sortedResults.people.length > 0 && (
+        <Box mb={6}>
+          <Text fontSize="2xl" fontWeight="bold" mb={4}>People</Text>
+          <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 5 }} spacing={4}>
+            {sortedResults.people.map(person => (
+              <PersonCard key={person.id} person={person} />
+            ))}
+          </SimpleGrid>
+          </Box>
+      )}
+    </Box>
   );
 };
 
