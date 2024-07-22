@@ -33,7 +33,7 @@ const PersonCard = ({ person }) => {
       _hover={{ transform: "scale(1.05)" }}
     >
       <Image
-        height="430px"
+        height={{ base: "200px", sm: "300px", md: "400px", lg: "430px" }} // Adjust heights based on screen size
         width="100%"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}

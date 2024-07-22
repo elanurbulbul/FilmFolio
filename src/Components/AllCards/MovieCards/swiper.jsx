@@ -78,7 +78,7 @@ const SwiperComponent = ({ initialMovieList }) => {
         {movieList.map((movie, index) => (
           <SwiperSlide key={movie.id} virtualIndex={index}>
             <Stack py="20px">
-              <MovieCard movie={movie} />
+              <MovieCard  movie={movie} />
             </Stack>
           </SwiperSlide>
         ))}

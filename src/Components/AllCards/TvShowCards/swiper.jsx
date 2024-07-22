@@ -76,8 +76,8 @@ const SwiperComponent = ({ initialTvList }) => {
       >
         {tvList.map((tv, index) => (
           <SwiperSlide key={tv.id} virtualIndex={index}>
-            <Stack py="20px">
-              <TvCard tv={tv} />
+            <Stack py="20px" >
+            <TvCard tv={tv} />
             </Stack>
           </SwiperSlide>
         ))}

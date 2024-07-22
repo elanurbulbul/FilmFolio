@@ -38,7 +38,7 @@ const MovieCard = ({ movie }) => {
     >
       <Image
         width="100vw"
-        height="430px"
+        height={{ base: "400px", lg: "430px" }} // Adjust heights based on screen size
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
