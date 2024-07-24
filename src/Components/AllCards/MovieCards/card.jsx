@@ -10,11 +10,18 @@ const MovieCard = ({ movie }) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  // Format the release year with error handling
+  const releaseYear = (() => {
+    try {
+      return format(new Date(movie.release_date), 'yyyy');
+    } catch {
+      return 'Unknown Year';
+    }
+  })();
+
   const handleDetailClick = () => {
     navigate(`/movies/${movie.id}`);
   };
-
-  const releaseYear = format(new Date(movie.release_date), 'yyyy');
 
   useEffect(() => {
     if (textRef.current) {
@@ -36,10 +43,11 @@ const MovieCard = ({ movie }) => {
       transition="transform 0.2s"
       _hover={{ 
         transform: "scale(1.05)",
-      mx:"6px"      }}
+        mx: "6px"
+      }}
     >
       <Image
-        width="100vw"
+        width="100%"
         height={{ base: "400px", lg: "430px" }} // Adjust heights based on screen size
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
