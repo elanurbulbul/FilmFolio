@@ -6,6 +6,7 @@ const PersonCard = ({ person }) => {
   const navigate = useNavigate();
   const textRef = useRef(null);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleDetailClick = () => {
     navigate(`/people/${person.id}`);
@@ -51,7 +52,7 @@ const PersonCard = ({ person }) => {
         <Tooltip
           label={person.name}
           aria-label="Name Tooltip"
-          isOpen={isTooltipVisible}
+          isOpen={isTooltipVisible && isHovered}
           hasArrow
         >
           <Text
@@ -62,6 +63,8 @@ const PersonCard = ({ person }) => {
             overflow="hidden"
             textOverflow="ellipsis"
             whiteSpace="nowrap"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             {person.name}
           </Text>
