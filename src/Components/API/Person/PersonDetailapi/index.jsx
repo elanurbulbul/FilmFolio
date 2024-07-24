@@ -31,7 +31,7 @@ const PersonDetailapi = () => {
   }
 
   return (
-    <Container maxW="container.xxl" mt={{ base: 4, md: 2 }} p={4}>
+    <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
       <PersonHeader personDetail={personDetail} />
       <PersonCredits credits={personDetail.credits} navigate={navigate} />
     </Container>

@@ -40,7 +40,7 @@ const PersonCredits = ({ credits, navigate }) => {
             <Text fontWeight="bold">{cast.title || cast.name}</Text>
             <Text>{cast.character}</Text>
             <Text>{cast.release_date}</Text>
-            <Text>{cast.overview}</Text>
+            <Text noOfLines={3}>{cast.overview ? cast.overview : "No overview available"}</Text>
           </Flex>
         ))}
       </SimpleGrid>
