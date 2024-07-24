@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Button, Input, Box, useToast, Switch, Text } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import DailyMovie from "../../Components/API/Trending/MoviesTrending/DailyMovie";
-import WeeklyMovie from "../../Components/API/Trending/MoviesTrending/WeeklyMovie";
+import { Container } from "@chakra-ui/react";
 import MoviesTrending from "../../Components/API/Trending/MoviesTrending/MoviesTrending";
 import TvTrending from "../../Components/API/Trending/TvTrending/TvShowsTrending";
 
@@ -17,11 +14,11 @@ const Homepage = () => {
   };
 
   return (
-    <>
+    <Container  maxW={{base:'container.sm',md:"container.md", lg:"container.lg", xl:"container.xl"}}>
       
      <MoviesTrending/>
      <TvTrending/>
-    </>
+    </Container>
   );
 };
 

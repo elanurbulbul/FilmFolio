@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/TvShowCards/list";
-import { Box, Spinner, Center, Container, Stack } from "@chakra-ui/react";
+import { Box, Spinner, Center, Container } from "@chakra-ui/react";
 
 const AiringToday = () => {
   const [tvList, setTvList] = useState([]);
@@ -28,7 +28,7 @@ const AiringToday = () => {
   }, []);
 
   return (
-    <Stack >
+    <Box >
       {loading ? (
         <Center>
           <Spinner size="xl" />
@@ -36,7 +36,7 @@ const AiringToday = () => {
       ) : (
         <List tvList={tvList} />
       )}
-    </Stack>
+    </Box>
   );
 };
 
