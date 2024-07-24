@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/TvShowCards/list";
-import { Box, Spinner, Center } from "@chakra-ui/react";
+import { Box, Spinner, Center, Container, Stack } from "@chakra-ui/react";
 
 const AiringToday = () => {
   const [tvList, setTvList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
   const getTv = () => {
-    
     fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/tv/on_the_air?api_key=${import.meta.env.VITE_API_KEY}`
+      `${import.meta.env.VITE_API_BASE_URL}/tv/on_the_air?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -28,7 +28,7 @@ const AiringToday = () => {
   }, []);
 
   return (
-    <Box p="3">
+    <Stack >
       {loading ? (
         <Center>
           <Spinner size="xl" />
@@ -36,8 +36,7 @@ const AiringToday = () => {
       ) : (
         <List tvList={tvList} />
       )}
-    </Box>
-
+    </Stack>
   );
 };
 

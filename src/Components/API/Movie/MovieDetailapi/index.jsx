@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Container, Spinner, Stack, Flex } from "@chakra-ui/react";
+import { Card, Container, Spinner, Stack, Flex, Center } from "@chakra-ui/react";
 import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
 import CastList from "../../../DetailPageElements/CastList";
@@ -27,7 +27,7 @@ const MovieDetailapi = () => {
 
   if (!movieDetail) {
     return (
-      <Container centerContent>
+      <Center centerContent>
         <Spinner
           thickness="4px"
           speed="0.65s"
@@ -35,7 +35,7 @@ const MovieDetailapi = () => {
           color="gray.400"
           size="xl"
         />
-      </Container>
+      </Center>
     );
   }
 

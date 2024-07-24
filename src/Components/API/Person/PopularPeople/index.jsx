@@ -1,4 +1,4 @@
-import { Heading, Box, Flex, Button, Spinner, Container, useBreakpointValue, IconButton } from "@chakra-ui/react";
+import { Heading, Box, Flex, Center, Spinner, Container, useBreakpointValue, IconButton } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/PersonCards/list";
@@ -34,12 +34,11 @@ const PopulerPeople = () => {
 
 
   return (
-    <Box p={4}>
-      <Heading mb={4}>Popular People</Heading>
+    <Box my={10} >
       {loading ? (
-        <Container centerContent mt={4}>
+        <Center  mt={4}>
           <Spinner size="xl" />
-        </Container>
+        </Center>
       ) : (
         <>
           <List people={personList} />
