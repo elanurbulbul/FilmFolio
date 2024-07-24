@@ -38,8 +38,9 @@ const TvCard = ({ tv }) => {
       }}
     >
       <Image
-        width="100vw"
-        height={{ base: "400px", lg: "430px" }} // Adjust heights based on screen size
+        width="100%"
+        aspectRatio={2 / 3}
+        height="auto"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}
         alt={tv.name}

@@ -6,7 +6,6 @@ const PersonCard = ({ person }) => {
   const navigate = useNavigate();
   const textRef = useRef(null);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleDetailClick = () => {
     navigate(`/people/${person.id}`);
@@ -14,7 +13,9 @@ const PersonCard = ({ person }) => {
 
   useEffect(() => {
     if (textRef.current) {
-      setIsTooltipVisible(textRef.current.scrollWidth > textRef.current.clientWidth);
+      setIsTooltipVisible(
+        textRef.current.scrollWidth > textRef.current.clientWidth
+      );
     }
   }, [person.name]);
 
@@ -33,8 +34,9 @@ const PersonCard = ({ person }) => {
       _hover={{ transform: "scale(1.05)" }}
     >
       <Image
-        height={{ base: "200px", sm: "300px", md: "400px", lg: "430px" }} // Adjust heights based on screen size
         width="100%"
+        aspectRatio={2 / 3}
+        height="auto"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
         alt={person.name}
@@ -49,7 +51,7 @@ const PersonCard = ({ person }) => {
         <Tooltip
           label={person.name}
           aria-label="Name Tooltip"
-          isOpen={isTooltipVisible && isHovered}
+          isOpen={isTooltipVisible}
           hasArrow
         >
           <Text
@@ -60,8 +62,6 @@ const PersonCard = ({ person }) => {
             overflow="hidden"
             textOverflow="ellipsis"
             whiteSpace="nowrap"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
           >
             {person.name}
           </Text>
