@@ -26,7 +26,7 @@ const DesktopNav = () => {
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
                             <Link
-                                p={2}
+                                p={1}
                                 href={navItem.href ?? '#'}
                                 fontSize={'sm'}
                                 fontWeight={500}
@@ -44,7 +44,7 @@ const DesktopNav = () => {
                                 border={0}
                                 boxShadow={'xl'}
                                 bg={popoverContentBgColor}
-                                p={4}
+                                p={3}
                                 rounded={'xl'}
                                 minW={'sm'}>
                                 <Stack>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MultiSearch from "../../Components/API/Search/MultiSearch"; // Path'i ihtiyaca göre güncelleyin
+import { Heading, Text } from "@chakra-ui/react";
 
 const SearchPage = () => {
   const location = useLocation();
@@ -13,9 +14,9 @@ const SearchPage = () => {
 
   return (
     <div>
-      <h1>
+      <Text>
         {searchTerm ? `Search Results for "${searchTerm}"` : "Please enter a search term."}
-      </h1>
+      </Text>
       {searchTerm && <MultiSearch searchTerm={searchTerm} />}
     </div>
   );
