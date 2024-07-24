@@ -27,6 +27,7 @@ const DesktopNav = () => {
                         <PopoverTrigger>
                             <Link
                                 p={1}
+                                whiteSpace="nowrap"
                                 href={navItem.href ?? '#'}
                                 fontSize={'sm'}
                                 fontWeight={500}
