@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Switch, Flex } from "@chakra-ui/react";
+import { Box, Text, Switch, Flex, Stack } from "@chakra-ui/react";
 import DailyMovie from "./DailyMovie";
 import WeeklyMovie from "./WeeklyMovie";
 
@@ -11,17 +11,19 @@ const MoviesTrending = () => {
   };
 
   return (
-    <Box my="50px" >
-      <Flex justifyContent="space-between" alignItems="center"  mx={5}>
-        <Text fontSize="30px" >
-          {isWeekly ? "Weekly Movies" : "Daily Movies"}
-        </Text>
-        <Switch
-          colorScheme="teal"
-          size="lg"
-          isChecked={isWeekly}
-          onChange={handleToggle}
-        />
+    <Box my="50px">
+      <Flex justifyContent="flex-end" alignItems="center" mx={5}>
+        
+        <Stack direction="row"  spacing={2}>
+          <Text>Daily</Text>
+          <Switch
+            colorScheme="teal"
+            size="lg"
+            isChecked={isWeekly}
+            onChange={handleToggle}
+          />
+          <Text>Weekly</Text>
+        </Stack>
       </Flex>
       <Box>
         {isWeekly ? <WeeklyMovie /> : <DailyMovie />}
