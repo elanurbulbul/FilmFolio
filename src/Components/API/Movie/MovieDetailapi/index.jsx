@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Container, Spinner, Stack, Flex, Center } from "@chakra-ui/react";
+import { Card, Container, Spinner, Stack, Flex, Center,Text } from "@chakra-ui/react";
 import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
-import CastList from "../../../DetailPageElements/CastList";
-import GenreList from "../../../DetailPageElements/GenreList";
-import Trailer from "../../../DetailPageElements/Trailer";
+import CastList from "../../DetailPageElements/CastList";
+import GenreList from "../../DetailPageElements/GenreList";
+import Trailer from "../../DetailPageElements/Trailer";
 import "./index.scss";
 
 const MovieDetailapi = () => {
@@ -13,7 +13,7 @@ const MovieDetailapi = () => {
   const [movieDetail, setMovieDetail] = useState(null);
 
   const getMovieDetail = () => {
-    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/movie/${movieId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/movie/${movieId}?append_to_response=videos,vote_average,release_date,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -27,7 +27,7 @@ const MovieDetailapi = () => {
 
   if (!movieDetail) {
     return (
-      <Center centerContent>
+      <Center >
         <Spinner
           thickness="4px"
           speed="0.65s"
@@ -44,7 +44,7 @@ const MovieDetailapi = () => {
   );
 
   return (
-    <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
+    <Stack>
       <Card 
         p={2}
         borderRadius="lg"
@@ -78,8 +78,9 @@ const MovieDetailapi = () => {
           </Stack>
         </Stack>
       </Card>
+      <Text>{movieDetail.release_date}</Text>
       <CastList cast={movieDetail.credits.cast} />
-    </Container>
+    </Stack>
   );
 };
 

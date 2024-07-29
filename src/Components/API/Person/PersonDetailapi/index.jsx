@@ -24,7 +24,7 @@ const PersonDetailapi = () => {
 
   if (!personDetail) {
     return (
-      <Container centerContent>
+      <Container >
         <Spinner />
       </Container>
     );

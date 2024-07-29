@@ -3,7 +3,16 @@ import PersonDetailapi from "../../Components/API/Person/PersonDetailapi" ;
 
 const PersonDetail = () => {
   return (
-    <PersonDetailapi/>
+    <Container
+    maxW={{
+      base: "container.sm",
+      md: "container.md",
+      lg: "container.lg",
+      xl: "container.xl",
+    }}
+  >
+    <PersonDetailapi />
+  </Container>
   );
 };
 export default PersonDetail;

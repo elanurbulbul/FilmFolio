@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { Text, Box, Card, Container, Spinner, Stack } from "@chakra-ui/react";
 import TVShowHeader from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
-import CastList from "../../../DetailPageElements/CastList";
-import GenreList from "../../../DetailPageElements/GenreList";
-import Trailer from "../../../DetailPageElements/Trailer";
+import CastList from "../../DetailPageElements/CastList";
+import GenreList from "../../DetailPageElements/GenreList";
+import Trailer from "../../DetailPageElements/Trailer";
 
 const TvShowDetailapi = () => {
   const { tvId } = useParams();
@@ -30,7 +30,7 @@ const TvShowDetailapi = () => {
 
   if (!tvShowDetail) {
     return (
-      <Container centerContent>
+      <Container >
         <Spinner
           thickness="4px"
           speed="0.65s"
