@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Switch, Flex, Stack } from "@chakra-ui/react";
+import { Box, Text, Switch, Flex, Stack, Heading } from "@chakra-ui/react";
 import DailyMovie from "./DailyMovie";
 import WeeklyMovie from "./WeeklyMovie";
 
@@ -11,20 +11,25 @@ const MoviesTrending = () => {
   };
 
   return (
-    <Box my="50px">
-      <Flex justifyContent="flex-end" alignItems="center" mx={5}>
-        
-        <Stack direction="row"  spacing={2}>
+    <Box my="50px" >
+      <Flex justifyContent="space-between" alignItems="center" mx={3}>
+        <Stack direction="column" display="flex">
+        <Heading whiteSpace={"nowrap"} textAlign="start" fontSize={{base:"22px", md:"30px"}}>TOP 20 MOVIES</Heading>
+        </Stack>
+       
+
+        <Stack direction="row" display={"flex"} alignItems={"center"} spacing={2}>
           <Text>Daily</Text>
           <Switch
+          size={{base:"md", md:"lg"}}
             colorScheme="teal"
-            size="lg"
             isChecked={isWeekly}
             onChange={handleToggle}
           />
-          <Text>Weekly</Text>
+          <Text >Weekly</Text>
         </Stack>
       </Flex>
+      <Text mx={3} mt={2}  textAlign="start" fontSize={{base:"10px", md:"18px"}} >You can see weekly or daily movies...</Text>
       <Box>
         {isWeekly ? <WeeklyMovie /> : <DailyMovie />}
       </Box>
