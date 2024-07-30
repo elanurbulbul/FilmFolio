@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Text, Box, Card, Container, Spinner, Stack } from "@chakra-ui/react";
+import { Text, Box, Card, Container, Spinner, Stack,Flex } from "@chakra-ui/react";
 import TVShowHeader from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
 import CastList from "../../DetailPageElements/CastList";
@@ -47,7 +47,23 @@ const TvShowDetailapi = () => {
   );
 
   return (
-    <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
+    <Stack my={20}>
+    <Stack>
+      <TVShowHeader title={tvShowDetail.title} />
+      <Text  textAlign="start">{tvShowDetail.release_date}</Text>
+
+        <Flex align="center" >
+          <TvShowPoster
+            posterPath={tvShowDetail.poster_path}
+            title={tvShowDetail.title}
+          />
+          <Trailer
+            title={tvShowDetail.title}
+            trailer={officialTrailer}
+            posterPath={tvShowDetail.poster_path}
+          />
+        </Flex>
+    </Stack>
       <Card
         p={2}
         borderRadius="lg"
@@ -84,7 +100,7 @@ const TvShowDetailapi = () => {
         </Stack>
       </Card>
       <CastList cast={tvShowDetail.credits.cast} />
-    </Container>
+    </Stack>
   );
 };
 

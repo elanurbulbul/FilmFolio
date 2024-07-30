@@ -79,9 +79,9 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
           </Modal>
         </>
       ) : (
-        <Text fontSize="20px" color="gray" fontWeight="bold">
-          ( No trailer available! )
-        </Text>
+        <Box  border="2px" p={3} ml={5} fontSize="20px" color="gray" fontWeight="bold">
+           No trailer available! 
+        </Box>
       )}
     </Box>
   );

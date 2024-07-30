@@ -1,5 +1,6 @@
 import React from "react";
 import TvShowDetailapi from "../../Components/API/TvShow/TvShowDetailapi";
+import { Container } from "@chakra-ui/react";
 
 const TvShowsDetail = () => {
   return (
