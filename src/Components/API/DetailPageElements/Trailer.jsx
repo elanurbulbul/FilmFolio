@@ -1,5 +1,7 @@
 import React from "react";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text, Image, Icon, Stack } from "@chakra-ui/react";
+import { MdPlayArrow } from "react-icons/md"; // YouTube izleme ikonu
+
 import {
   Modal,
   ModalOverlay,
@@ -11,17 +13,43 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-const Trailer = ({ trailer, name, title }) => {
+const Trailer = ({ trailer, name, title, posterPath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const displayName = name || title;
+  
+  // YouTube video ID'den video önizleme resmini almak için fonksiyon
+  const getVideoThumbnail = (videoId) => `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   return (
-    <Box mt={4}>
+    <Box  position="relative" py="0.7" >
       {trailer ? (
         <>
-          <Button onClick={onOpen} as="h2" size="lg" mb={2}>
-            Watch Trailer
-          </Button>
+          <Image  
+            width="100%"
+            height="auto"
+            maxWidth="480px"
+            aspectRatio="5/4"
+            src={getVideoThumbnail(trailer.key)} // Video önizleme resmini göster
+            alt="Watch Trailer"
+            cursor="pointer"
+            onClick={onOpen}
+            borderRadius="md"
+          />
+          <Box
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            color="white"
+            fontSize="70px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            cursor="pointer"
+            onClick={onOpen}
+          >
+            <Icon  as={MdPlayArrow} />
+          </Box>
 
           <Modal isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
@@ -39,8 +67,7 @@ const Trailer = ({ trailer, name, title }) => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-
-               />
+                />
               </ModalBody>
 
               <ModalFooter>
