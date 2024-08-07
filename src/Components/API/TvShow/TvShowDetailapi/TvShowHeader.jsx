@@ -2,9 +2,9 @@ import React from "react";
 import { Heading, Text, Box } from "@chakra-ui/react";
 
 const TVShowHeader = ({ name, overview, seasons, episodes }) => (
-  <Box>
-    <Heading as="h1" size="xl" my={4}>
-      {name}
+  <>
+    <Heading as="h1" size="xl" my={4} textAlign="start">
+    {name}
     </Heading>
     <Text fontSize="lg" mb={4}>
       {overview}
@@ -15,7 +15,7 @@ const TVShowHeader = ({ name, overview, seasons, episodes }) => (
     <Text fontSize="lg" fontWeight="bold">
       Episodes: {episodes}
     </Text>
-  </Box>
+  </>
 );
 
 export default TVShowHeader;

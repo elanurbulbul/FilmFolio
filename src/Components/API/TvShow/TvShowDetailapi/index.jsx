@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Text, Box, Card, Container, Spinner, Stack,Flex } from "@chakra-ui/react";
+import {
+  Card,
+  Heading,
+  Spinner,
+  Stack,
+  Box,
+  Center,
+  Text,
+  HStack,
+  VStack,
+  Flex,
+} from "@chakra-ui/react";
 import TVShowHeader from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
 import CastList from "../../DetailPageElements/CastList";
@@ -30,7 +41,7 @@ const TvShowDetailapi = () => {
 
   if (!tvShowDetail) {
     return (
-      <Container >
+      <Center>
         <Spinner
           thickness="4px"
           speed="0.65s"
@@ -38,7 +49,7 @@ const TvShowDetailapi = () => {
           color="gray.400"
           size="xl"
         />
-      </Container>
+      </Center>
     );
   }
 
@@ -48,22 +59,26 @@ const TvShowDetailapi = () => {
 
   return (
     <Stack my={20}>
-    <Stack>
-      <TVShowHeader title={tvShowDetail.title} />
-      <Text  textAlign="start">{tvShowDetail.release_date}</Text>
+      <Stack>
+        <TVShowHeader name={tvShowDetail.name} />
+        <Text textAlign="start">{tvShowDetail.first_air_date}</Text>
 
-        <Flex align="center" >
-          <TvShowPoster
-            posterPath={tvShowDetail.poster_path}
-            title={tvShowDetail.title}
-          />
+        <Flex>
+          <>
+            <TvShowPoster
+              posterPath={tvShowDetail.poster_path}
+              title={tvShowDetail.name}
+            />
+          </>
+
           <Trailer
-            title={tvShowDetail.title}
+            title={tvShowDetail.name}
             trailer={officialTrailer}
             posterPath={tvShowDetail.poster_path}
           />
         </Flex>
-    </Stack>
+      </Stack>
+
       <Card
         p={2}
         borderRadius="lg"
@@ -73,21 +88,10 @@ const TvShowDetailapi = () => {
         spacing={5}
         mb={8}
       >
-        <Stack flex="1" mb={{ base: 5, md: 0 }} alignSelf={"center"}>
-          <TvShowPoster
-            posterPath={tvShowDetail.poster_path}
-            name={tvShowDetail.name}
-          />
-        </Stack>
         <Stack flex="1" align="stretch">
           <Stack>
-            <TVShowHeader
-              name={tvShowDetail.name}
-              overview={tvShowDetail.overview}
-              seasons={tvShowDetail.number_of_seasons}
-              episodes={tvShowDetail.number_of_episodes}
-            />
-            <Trailer name={tvShowDetail.name} trailer={officialTrailer} />
+            <TVShowHeader seasons={tvShowDetail.number_of_seasons}
+          episodes={tvShowDetail.number_of_episodes}  overview={tvShowDetail.overview} />
           </Stack>
           <Stack
             flex="1"

@@ -62,17 +62,22 @@ const MovieDetailapi = () => {
     <Stack my={20}>
       <Stack>
         <MovieHeader title={movieDetail.title} />
-          <Flex >
+        <Text textAlign="start">{movieDetail.release_date}</Text>
+
+        <Flex>
+          <>
             <MoviePoster
               posterPath={movieDetail.poster_path}
               title={movieDetail.title}
             />
-            <Trailer
-              title={movieDetail.title}
-              trailer={officialTrailer}
-              posterPath={movieDetail.poster_path}
-            />
-          </Flex>
+          </>
+
+          <Trailer
+            title={movieDetail.title}
+            trailer={officialTrailer}
+            posterPath={movieDetail.poster_path}
+          />
+        </Flex>
       </Stack>
 
       <Card
@@ -98,7 +103,6 @@ const MovieDetailapi = () => {
           </Stack>
         </Stack>
       </Card>
-      <Text>{movieDetail.release_date}</Text>
       <CastList cast={movieDetail.credits.cast} />
     </Stack>
   );

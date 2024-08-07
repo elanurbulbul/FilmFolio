@@ -3,7 +3,7 @@ import { Box, Image } from "@chakra-ui/react";
 
 const MoviePoster = ({ posterPath, title }) => {
   return (
-    <Box marginRight={3} >
+    <Box marginRight={2} >
       <Image
         width="100%"
         height="auto"
