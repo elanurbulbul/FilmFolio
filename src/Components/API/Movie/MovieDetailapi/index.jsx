@@ -79,31 +79,13 @@ const MovieDetailapi = () => {
           />
         </Flex>
       </Stack>
-
-      <Card
-        p={2}
-        borderRadius="lg"
-        display="flex"
-        flexDirection={{ base: "column-reverse", md: "row" }}
-        align={{ base: "center", md: "stretch" }}
-        spacing={5}
-        mb={8}
-      >
-        <Stack flex="1" align="stretch">
-          <Stack>
-            <MovieHeader overview={movieDetail.overview} />
-          </Stack>
-          <Stack
-            flex="1"
-            display="flex"
-            flexDirection="column"
-            justifyContent="flex-end"
-          >
-            <GenreList genres={movieDetail.genres} />
-          </Stack>
+        <Stack  py={2}>
+          <GenreList genres={movieDetail.genres} />
         </Stack>
-      </Card>
-      <CastList cast={movieDetail.credits.cast} />
+        <Stack  py={2} textAlign="start">
+          <MovieHeader overview={movieDetail.overview} />
+        </Stack>
+      {/* <CastList cast={movieDetail.credits.cast} /> */}
     </Stack>
   );
 };
