@@ -25,6 +25,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
       {trailer ? (
         <>
           <Image  
+          
             width="100%"
             height="auto"
             maxWidth="480px"
