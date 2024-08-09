@@ -13,8 +13,9 @@ import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
 import GenreList from "../../DetailPageElements/GenreList";
 import Trailer from "../../DetailPageElements/Trailer";
-import "./index.scss";
 import CastList from "../../DetailPageElements/CastList";
+import Company from "../../DetailPageElements/Companies";
+import VideoList from "../../DetailPageElements/Videos";
 
 const MovieDetailapi = () => {
   const { movieId } = useParams();
@@ -58,8 +59,8 @@ const MovieDetailapi = () => {
       <Stack>
         <MovieHeader title={movieDetail.title} homepage={movieDetail.homepage} />
         <Flex align="center">
-          <StarIcon color="yellow.400" boxSize="1.2rem" />
-          <Text fontSize="20px" ml={1}>{movieDetail.vote_average.toFixed(2)}</Text>
+          <StarIcon color="yellow.400" boxSize="1.3rem" mr={1}/>
+          <Text fontSize="24px" ml={1}>{movieDetail.vote_average.toFixed(2)}</Text>
         </Flex>
 
         <Flex>
@@ -87,7 +88,12 @@ const MovieDetailapi = () => {
         </Text>
         <MovieHeader overview={movieDetail.overview} />
       </Stack>
+      <Stack pb={2}>
       <CastList cast={movieDetail.credits.cast}/>
+
+        <VideoList videos={movieDetail.videos.results}/>
+      </Stack>
+      <Company companies={movieDetail.production_companies} />
     </Stack>
   );
 };

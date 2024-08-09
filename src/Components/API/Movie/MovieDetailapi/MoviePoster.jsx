@@ -7,6 +7,7 @@ const MoviePoster = ({ posterPath, title }) => {
       <Image
         width="100%"
         height="auto"
+        maxHeight="385px"
         maxWidth="288px"
         aspectRatio="3/4"
         src={`https://image.tmdb.org/t/p/w500${posterPath}`}
