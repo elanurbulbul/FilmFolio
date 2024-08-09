@@ -87,7 +87,7 @@ const MovieDetailapi = () => {
         </Text>
         <MovieHeader overview={movieDetail.overview} />
       </Stack>
-      <CastList/>
+      <CastList cast={movieDetail.credits.cast}/>
     </Stack>
   );
 };
