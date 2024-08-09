@@ -21,7 +21,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
   const getVideoThumbnail = (videoId) => `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   return (
-    <Box  position="relative" py="0.7"  >
+    <Box  position="relative" py="0.5"  >
       {trailer ? (
         <>
           <Image  
