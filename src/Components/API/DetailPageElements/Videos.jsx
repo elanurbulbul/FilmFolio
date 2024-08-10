@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import './index.scss'; // Ensure this CSS file is available and imported
+import './index.scss';
 
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
@@ -28,7 +28,15 @@ const VideoList = ({ videos }) => {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={'auto'}
+        slidesPerView={1}  
+        breakpoints={{
+          768: {
+            slidesPerView: 2,  
+          },
+          1024: {
+            slidesPerView: 3,  
+          },
+        }}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -42,47 +50,47 @@ const VideoList = ({ videos }) => {
       >
         {videos.map((video) => (
           <SwiperSlide key={video.id}>
-          <Box
-            p={5} 
-            m="auto" 
-            borderWidth="1px"
-            borderRadius="md"
-            boxShadow="sm"
-            textAlign="center"
-            height="auto"
-            aspectRatio="4/3"
-            backgroundPosition='center'
-            backgroundSize='cover'
-            width='100%'
-            className="video-slide"
-          >
-            <Text
-              fontSize={fontSize}
-              fontWeight="500"
-              mb={2}
-              maxWidth="280px"
-              title={video.name}
+            <Box
+              p={5}
+              m="auto"
+              borderWidth="1px"
+              borderRadius="md"
+              boxShadow="sm"
+              width="100%"
+              height="auto"
+              textAlign="center"
+              backgroundPosition="center"
+              backgroundSize="cover"
+              className="video-slide"
             >
-              {video.name} - {video.type}
-            </Text>
-            {video.site === 'YouTube' && (
-              <AspectRatio ratio={16 / 9} width="100%">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.key}`}
-                  title={video.name}
-                  allowFullScreen
-                  style={{
-                    border: 0,
-                    borderRadius: '8px',
-                    width: '100%',
-                    height: '100%',
-                  }}
-                />
-              </AspectRatio>
-            )}
-          </Box>
-        </SwiperSlide>
-        
+              <Text
+                fontSize={fontSize}
+                fontWeight="500"
+                mb={2}
+                px={4}
+                maxWidth="350px"
+                title={video.name}
+                isTruncated
+              >
+                {video.name} - {video.type}
+              </Text>
+              {video.site === 'YouTube' && (
+                <AspectRatio ratio={16 / 9} width="100%">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    title={video.name}
+                    allowFullScreen
+                    style={{
+                      border: 0,
+                      borderRadius: '8px',
+                      width: '100%',
+                      height: '100%',
+                    }}
+                  />
+                </AspectRatio>
+              )}
+            </Box>
+          </SwiperSlide>
         ))}
       </Swiper>
     </Box>
