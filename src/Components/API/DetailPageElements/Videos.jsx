@@ -39,7 +39,6 @@ const VideoList = ({ videos }) => {
         pagination={{ clickable: true }}
         modules={[EffectCoverflow, Pagination]}
         className="VideosSwiper"
-        style={{ width: '100%' }}
       >
         {videos.map((video) => (
           <SwiperSlide key={video.id}>
@@ -50,10 +49,11 @@ const VideoList = ({ videos }) => {
             borderRadius="md"
             boxShadow="sm"
             textAlign="center"
-            height="300px"
+            height="auto"
+            aspectRatio="4/3"
             backgroundPosition='center'
             backgroundSize='cover'
-            width='400px'
+            width='100%'
             className="video-slide"
           >
             <Text
