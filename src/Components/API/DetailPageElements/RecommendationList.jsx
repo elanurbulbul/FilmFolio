@@ -23,23 +23,23 @@ const RecommendationList = ({ recommendations }) => {
         breakpoints={{
           320: {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 5,
           },
           480: {
             slidesPerView: 3,
-            spaceBetween: 15,
+            spaceBetween: 10,
           },
           640: {
             slidesPerView: 4,
-            spaceBetween: 20,
+            spaceBetween: 15,
           },
           1024: {
             slidesPerView: 5,
-            spaceBetween: 25,
+            spaceBetween: 20,
           },
           1280: {
             slidesPerView: 6,
-            spaceBetween: 30,
+            spaceBetween: 25,
           },
         }}
         modules={[Navigation, Pagination]}

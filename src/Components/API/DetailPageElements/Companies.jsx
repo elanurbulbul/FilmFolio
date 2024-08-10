@@ -14,23 +14,23 @@ const Company = ({ companies }) => {
               <Image
                 src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
                 alt={company.name}
-                boxSize="110px"
+                boxSize="125px"
                 objectFit="contain"
-                m="auto" // Logoyu ortalamak için
+                m="auto" 
               />
             ) : (
               <Box
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                boxSize="110px"
+                boxSize="125px"
                 borderWidth="1px"
                 borderRadius="md"
               >
                 <Text fontSize="14px">No Logo</Text>
               </Box>
             )}
-            <Text mt={2} fontSize="14px">
+            <Text mt={2}  fontSize="14px">
               {company.name}
             </Text>
           </Box>
