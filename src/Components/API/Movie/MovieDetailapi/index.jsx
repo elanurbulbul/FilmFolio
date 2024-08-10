@@ -93,9 +93,10 @@ const MovieDetailapi = () => {
       <CastList cast={movieDetail.credits.cast}/>
 
         <VideoList videos={movieDetail.videos.results}/>
+        <Company companies={movieDetail.production_companies} />
+        <RecommendationList recommendations={movieDetail.recommendations.results} />
       </Stack>
-      <Company companies={movieDetail.production_companies} />
-      <RecommendationList recommendations={movieDetail.recommendations.results} />
+     
 
     </Stack>
   );

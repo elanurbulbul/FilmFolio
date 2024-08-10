@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text, Flex } from "@chakra-ui/react";
 
 export const TVShowName = ({ name }) => (
   <Heading as="h1" size="xl" my={4} textAlign="start">
@@ -12,11 +12,14 @@ export const TVShowDetails = ({ overview, seasons, episodes }) => (
     <Text fontSize="lg" mb={4}>
       {overview}
     </Text>
-    <Text fontSize="lg" fontWeight="bold" mb={2}>
+    <Flex mb={2}>
+    <Text mr={2} fontSize="lg" fontWeight="500" >
       Seasons: {seasons}
-    </Text>
-    <Text fontSize="lg" fontWeight="bold">
+    </Text> |
+    <Text ml={2} fontSize="lg" fontWeight="500">
       Episodes: {episodes}
     </Text>
+    </Flex>
+    
   </>
 );

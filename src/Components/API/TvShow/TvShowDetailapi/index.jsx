@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Card,
-  Heading,
-  Spinner,
-  Stack,
-  Box,
-  Center,
-  Text,
-  HStack,
-  VStack,
-  Flex,
-} from "@chakra-ui/react";
-import TVShowHeader from "./TvShowHeader";
+import { Card, Spinner, Stack, Center, Text, Flex } from "@chakra-ui/react";
+import { TVShowName, TVShowDetails } from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
 import CastList from "../../DetailPageElements/CastList";
 import GenreList from "../../DetailPageElements/GenreList";
 import Trailer from "../../DetailPageElements/Trailer";
+import Company from "../../DetailPageElements/Companies";
+import RecommendationList from "../../DetailPageElements/RecommendationList";
+import VideoList from "../../DetailPageElements/Videos";
+import { StarIcon } from "@chakra-ui/icons";
 
 const TvShowDetailapi = () => {
   const { tvId } = useParams();
@@ -42,13 +35,7 @@ const TvShowDetailapi = () => {
   if (!tvShowDetail) {
     return (
       <Center>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="gray.400"
-          size="xl"
-        />
+        <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="gray.400" size="xl" />
       </Center>
     );
   }
@@ -60,50 +47,44 @@ const TvShowDetailapi = () => {
   return (
     <Stack my={20}>
       <Stack>
-        <TVShowHeader name={tvShowDetail.name} />
-        <Text textAlign="start">{tvShowDetail.first_air_date}</Text>
+        <TVShowName name={tvShowDetail.name} />
+        <Flex align="center">
+          <StarIcon color="yellow.400" boxSize="1.3rem" mr={1}/>
+          <Text fontSize="24px" ml={1}>{tvShowDetail.vote_average.toFixed(2)}</Text>
+        </Flex>
+       
 
         <Flex>
-          <>
-            <TvShowPoster
-              posterPath={tvShowDetail.poster_path}
-              title={tvShowDetail.name}
-            />
-          </>
-
-          <Trailer
-            title={tvShowDetail.name}
-            trailer={officialTrailer}
-            posterPath={tvShowDetail.poster_path}
-          />
+          <TvShowPoster posterPath={tvShowDetail.poster_path} title={tvShowDetail.name} />
+          <Trailer title={tvShowDetail.name} trailer={officialTrailer} posterPath={tvShowDetail.poster_path} />
         </Flex>
       </Stack>
+        <Stack>
+        <Flex>
+          <Text mr={1}>{tvShowDetail.first_air_date}</Text> 
+          <Text>/ {tvShowDetail.last_air_date}</Text>
+        </Flex>
+        <GenreList genres={tvShowDetail.genres} />
 
-      <Card
-        p={2}
-        borderRadius="lg"
-        display="flex"
-        flexDirection={{ base: "column-reverse", md: "row" }}
-        align={{ base: "center", md: "stretch" }}
-        spacing={5}
-        mb={8}
-      >
-        <Stack flex="1" align="stretch">
-          <Stack>
-            <TVShowHeader seasons={tvShowDetail.number_of_seasons}
-          episodes={tvShowDetail.number_of_episodes}  overview={tvShowDetail.overview} />
-          </Stack>
-          <Stack
-            flex="1"
-            display="flex"
-            flexDirection="column"
-            justifyContent="flex-end"
-          >
-            <GenreList genres={tvShowDetail.genres} />
-          </Stack>
         </Stack>
-      </Card>
+
+        <Stack py={2} textAlign="start">
+        <Text fontWeight="600" fontSize="25px">
+          Summary
+        </Text>
+        <TVShowDetails
+          overview={tvShowDetail.overview}
+          seasons={tvShowDetail.number_of_seasons}
+          episodes={tvShowDetail.number_of_episodes}
+        />
+      </Stack>
+
+      <Stack pb={2} ></Stack>
+
       <CastList cast={tvShowDetail.credits.cast} />
+      <VideoList videos={tvShowDetail.videos.results} />
+      <Company companies={tvShowDetail.production_companies} />
+      <RecommendationList recommendations={tvShowDetail.recommendations.results} />
     </Stack>
   );
 };
