@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Image, Text, Stack } from "@chakra-ui/react";
+import { SimpleGrid, Image, Text, Box, Stack } from "@chakra-ui/react";
 
 const Company = ({ companies }) => {
   return (
@@ -7,33 +7,35 @@ const Company = ({ companies }) => {
       <Text textAlign="start" fontWeight="600" fontSize="25px">
         Production Companies
       </Text>
-      <Flex wrap="wrap" gap={4}>
+      <SimpleGrid columns={{ base: 3,sm:4, md: 5, lg: 6 }} spacing={4}>
         {companies.map((company) => (
-          <Flex key={company.id} align="center" direction="column" p={2}>
+          <Box key={company.id} p={2} textAlign="center">
             {company.logo_path ? (
               <Image
                 src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
                 alt={company.name}
                 boxSize="110px"
                 objectFit="contain"
+                m="auto" // Logoyu ortalamak için
               />
             ) : (
-              <Text
+              <Box
                 display="flex"
-                boxSize="110px" // Bo  x boyutunu burada belirleyin
                 alignItems="center"
                 justifyContent="center"
-                fontSize="14px"
+                boxSize="110px"
+                borderWidth="1px"
+                borderRadius="md"
               >
-                No Logo
-              </Text>
+                <Text fontSize="14px">No Logo</Text>
+              </Box>
             )}
-            <Text mt={2} textAlign="center" fontSize="14px">
+            <Text mt={2} fontSize="14px">
               {company.name}
             </Text>
-          </Flex>
+          </Box>
         ))}
-      </Flex>
+      </SimpleGrid>
     </Stack>
   );
 };

@@ -1,20 +1,18 @@
- .VideosSwiper {
-   width: 100%;
-   height: 100%;
+.VideosSwiper {
+  width: 100%;
+  height: 100%;
 
   .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px; /* Adjust width if needed */
-    height: 300px; /* Ensure height is consistent */
+ 
+    width: 400px; 
+    height: 300px; 
   }
 
   .video-slide {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
   }
- }
+}
 
- 

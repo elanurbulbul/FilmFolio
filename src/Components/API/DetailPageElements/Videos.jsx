@@ -43,49 +43,46 @@ const VideoList = ({ videos }) => {
       >
         {videos.map((video) => (
           <SwiperSlide key={video.id}>
-            <Box
-              p={4}
-              borderWidth="1px"
-              borderRadius="md"
-              boxShadow="sm"
-              textAlign="center"
-              height="300px" 
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              flexDirection="column"
-              backgroundPosition= 'center'
-              backgroundSize= 'cover'
-              width= '300px'
-              className="video-slide"
-              
+          <Box
+            p={5} 
+            m="auto" 
+            borderWidth="1px"
+            borderRadius="md"
+            boxShadow="sm"
+            textAlign="center"
+            height="300px"
+            backgroundPosition='center'
+            backgroundSize='cover'
+            width='400px'
+            className="video-slide"
+          >
+            <Text
+              fontSize={fontSize}
+              fontWeight="500"
+              mb={2}
+              maxWidth="280px"
+              title={video.name}
             >
-              <Text
-                fontSize={fontSize}
-                fontWeight="500"
-                mb={2}
-                maxWidth="280px"
-                title={video.name}
-              >
-                {video.name} - {video.type}
-              </Text>
-              {video.site === 'YouTube' && (
-                <AspectRatio ratio={16 / 9} width="100%">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${video.key}`}
-                    title={video.name}
-                    allowFullScreen
-                    style={{
-                      border: 0,
-                      borderRadius: '8px',
-                      width: '100%',
-                      height: '100%',
-                    }}
-                  />
-                </AspectRatio>
-              )}
-            </Box>
-          </SwiperSlide>
+              {video.name} - {video.type}
+            </Text>
+            {video.site === 'YouTube' && (
+              <AspectRatio ratio={16 / 9} width="100%">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.key}`}
+                  title={video.name}
+                  allowFullScreen
+                  style={{
+                    border: 0,
+                    borderRadius: '8px',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              </AspectRatio>
+            )}
+          </Box>
+        </SwiperSlide>
+        
         ))}
       </Swiper>
     </Box>
