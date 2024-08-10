@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SimpleGrid, Flex, Image, Text, Box, Heading, Button } from "@chakra-ui/react";
 
 const PersonCredits = ({ credits, navigate }) => {
-  const [visibleCount, setVisibleCount] = useState(5);
+  const [visibleCount, setVisibleCount] = useState(6);
   const [showMore, setShowMore] = useState(true);
 
   const handleCreditClick = (cast) => {
@@ -15,7 +15,7 @@ const PersonCredits = ({ credits, navigate }) => {
 
   const handleShowMoreClick = () => {
     setVisibleCount(prevCount => {
-      const newCount = prevCount + 5;
+      const newCount = prevCount + 6;
       if (newCount >= credits.cast.length) {
         setShowMore(false);
         return credits.cast.length;
@@ -27,7 +27,7 @@ const PersonCredits = ({ credits, navigate }) => {
   return (
     <Box mt={8}>
       <Heading size="lg">Credits-Cast</Heading>
-      <SimpleGrid columns={[1, 2, 3,4, 5]} spacing={4}>
+      <SimpleGrid columns={[2, 3,4, 5,6]} spacing={4}>
         {credits.cast.slice(0, visibleCount).map((cast, index) => (
           <Flex
             align="center"
@@ -51,7 +51,7 @@ const PersonCredits = ({ credits, navigate }) => {
                 aspectRatio="4/5"
                 src={`https://image.tmdb.org/t/p/w500${cast.poster_path}`}
                 alt={cast.title || cast.name}
-                mb={4}
+                
               />
             ) : (
               <Text   px={8} py={28} mb={2}>No poster available</Text>

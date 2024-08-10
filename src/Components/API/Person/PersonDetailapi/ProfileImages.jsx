@@ -14,11 +14,11 @@ const ProfileImages = ({ images }) => {
         spaceBetween={15}
         slidesPerView={2}
         breakpoints={{
-          320: { slidesPerView: 2, spaceBetween: 10 },
-          480: { slidesPerView: 3, spaceBetween: 15 },
-          640: { slidesPerView: 4, spaceBetween: 20 },
-          1024: { slidesPerView: 5, spaceBetween: 25 },
-          1280: { slidesPerView: 6, spaceBetween: 30 },
+          320: { slidesPerView: 1, spaceBetween: 10 },
+          480: { slidesPerView: 2, spaceBetween: 15 },
+          640: { slidesPerView: 3, spaceBetween: 20 },
+          1024: { slidesPerView: 4, spaceBetween: 25 },
+          1280: { slidesPerView: 5, spaceBetween: 30 },
         }}
         navigation={{
           prevEl: '.swiper-button-prev',
