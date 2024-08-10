@@ -16,6 +16,7 @@ import Trailer from "../../DetailPageElements/Trailer";
 import CastList from "../../DetailPageElements/CastList";
 import Company from "../../DetailPageElements/Companies";
 import VideoList from "../../DetailPageElements/Videos";
+import RecommendationList from "../../DetailPageElements/RecommendationList";
 
 const MovieDetailapi = () => {
   const { movieId } = useParams();
@@ -94,6 +95,8 @@ const MovieDetailapi = () => {
         <VideoList videos={movieDetail.videos.results}/>
       </Stack>
       <Company companies={movieDetail.production_companies} />
+      <RecommendationList recommendations={movieDetail.recommendations.results} />
+
     </Stack>
   );
 };
