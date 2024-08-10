@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Spinner } from "@chakra-ui/react";
+import { Container, Spinner, Stack } from "@chakra-ui/react";
 import PersonHeader from "./PersonHeader";
 import PersonCredits from "./PersonCredits";
+import PersonCrew from "./PersonCrew";
+import ProfileImages from "./ProfileImages";
 
 const PersonDetailapi = () => {
   const { personId } = useParams();
@@ -31,10 +33,14 @@ const PersonDetailapi = () => {
   }
 
   return (
-    <Container maxW="container.xl" mt={{ base: 4, md: 2 }} p={4}>
+    <Stack my={20}>
       <PersonHeader personDetail={personDetail} />
+      <ProfileImages images={personDetail.images}/>
+
       <PersonCredits credits={personDetail.credits} navigate={navigate} />
-    </Container>
+
+      <PersonCrew credits={personDetail.credits}/>
+    </Stack>
   );
 };
 
