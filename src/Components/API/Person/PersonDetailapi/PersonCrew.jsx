@@ -25,13 +25,14 @@ const PersonCrew = ({ credits }) => {
   const handleShowMoreClick = () => {
     setVisibleCount((prevCount) => {
       const newCount = prevCount + 6;
-      return Math.min(newCount, credits.crew.length); // Ensure not exceeding total length
+      return Math.min(newCount, credits.crew.length); 
     });
   };
 
   return (
-    <Box mt={8}>
-      <Heading>Credits-Crew</Heading>
+    <Box mt={8} >
+      <Heading textAlign="start">Credits (Crew)</Heading>
+      <Text textAlign="start" my={3}>Apart from acting, she/he has worked in many films and TV series in different departments.</Text>
       <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={4}>
         {credits.crew.slice(0, visibleCount).map((crew, index) => (
           <Flex
@@ -63,7 +64,7 @@ const PersonCrew = ({ credits }) => {
                 No poster available
               </Text>
             )}
-            <Text fontWeight="bold" mb={2}>
+            <Text fontWeight="bold" noOfLines={2} mb={2}>
               {crew.title || crew.name}
             </Text>
             <Text fontSize="sm" color="gray.500">

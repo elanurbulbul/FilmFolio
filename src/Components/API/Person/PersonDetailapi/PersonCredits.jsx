@@ -22,8 +22,9 @@ const PersonCredits = ({ credits }) => {
   };
 
   return (
-    <Box mt={8}>
-      <Heading size="lg">Credits-Cast</Heading>
+    <Box mt={8} >
+      <Heading textAlign="start" fontSize="30px">Credits (Cast)</Heading>
+      <Text textAlign="start" my={3}>Many movies and TV series she/he worked in as an actor</Text>
       <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={4}>
         {credits.cast.slice(0, visibleCount).map((cast, index) => (
           <Flex
@@ -50,9 +51,9 @@ const PersonCredits = ({ credits }) => {
                 alt={cast.title || cast.name}
               />
             ) : (
-              <Text px={8} py={28} mb={2}>No poster available</Text>
+              <Text px={8} py="14" mb={2}>No poster available</Text>
             )}
-            <Text fontWeight="bold">{cast.title || cast.name}</Text>
+            <Text fontWeight="bold" noOfLines={2}>{cast.title || cast.name}</Text>
             <Text fontWeight="200" fontStyle="italic">{cast.character}</Text>
             <Text>{cast.release_date}</Text>
             <Text noOfLines={3}>{cast.overview ? cast.overview : "No overview available"}</Text>

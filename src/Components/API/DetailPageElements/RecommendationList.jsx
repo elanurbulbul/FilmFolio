@@ -74,7 +74,7 @@ const RecommendationList = ({ recommendations }) => {
                   width="100%"
                   height="auto"
                 />
-                <Text mt={2} fontWeight="bold" noOfLines={1}>
+                <Text mt={2} px="3" fontWeight="bold" noOfLines={1}>
                   {recommendation.name || recommendation.title}
                 </Text>
               </Box>
