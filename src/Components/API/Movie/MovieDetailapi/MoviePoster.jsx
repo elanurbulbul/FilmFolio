@@ -3,7 +3,7 @@ import { Box, Image } from "@chakra-ui/react";
 
 const MoviePoster = ({ posterPath, title }) => {
   return (
-    <Box marginRight={2} alignSelf="center">
+    <Box marginRight={2} >
       <Image
         width="100%"
         height="auto"
@@ -12,7 +12,7 @@ const MoviePoster = ({ posterPath, title }) => {
         aspectRatio="3/4"
         src={`https://image.tmdb.org/t/p/w500${posterPath}`}
         alt={title}
-        borderRadius="md"
+        borderRadius="lg"
       />
     </Box>
   );

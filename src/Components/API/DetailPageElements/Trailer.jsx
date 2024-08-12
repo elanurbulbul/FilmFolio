@@ -17,24 +17,23 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const displayName = name || title;
   
-  // YouTube video ID'den video önizleme resmini almak için fonksiyon
+  
   const getVideoThumbnail = (videoId) => `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   return (
-    <Box  position="relative" py="0.5"  >
+    <Box  position="relative"  alignSelf="end" >
       {trailer ? (
         <>
-          <Image  
-          
+          <Image 
             width="100%"
             height="auto"
             maxWidth="480px"
             aspectRatio="5/4"
-            src={getVideoThumbnail(trailer.key)} // Video önizleme resmini göster
+            src={getVideoThumbnail(trailer.key)} 
             alt="Watch Trailer"
             cursor="pointer"
             onClick={onOpen}
-            borderRadius="md"
+            borderRadius="lg"
           />
           <Box
             position="absolute"
@@ -80,7 +79,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
           </Modal>
         </>
       ) : (
-        <Box display="flex" alignSelf="end" border="2px" p={3}  fontSize="20px" color="gray" fontWeight="bold">
+        <Box   border="2px" p={3} borderRadius="lg" fontSize="20px" color="gray" fontWeight="bold">
            No trailer available! 
         </Box>
       )}

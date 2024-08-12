@@ -12,7 +12,7 @@ const Poster = ({ posterPath, name }) => (
     aspectRatio="3/4"
     src={`https://image.tmdb.org/t/p/w500${posterPath}`}
     alt={name}
-    borderRadius="md"
+    borderRadius="lg"
   />
 </Box>
 );
