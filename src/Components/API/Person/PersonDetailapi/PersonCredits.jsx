@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { SimpleGrid, Flex, Image, Text, Box, Heading, Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-const PersonCredits = ({ credits, navigate }) => {
+const PersonCredits = ({ credits }) => {
   const [visibleCount, setVisibleCount] = useState(6);
-  const [showMore, setShowMore] = useState(true);
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleCreditClick = (cast) => {
     if (cast.title) {
@@ -14,20 +15,16 @@ const PersonCredits = ({ credits, navigate }) => {
   };
 
   const handleShowMoreClick = () => {
-    setVisibleCount(prevCount => {
+    setVisibleCount((prevCount) => {
       const newCount = prevCount + 6;
-      if (newCount >= credits.cast.length) {
-        setShowMore(false);
-        return credits.cast.length;
-      }
-      return newCount;
+      return Math.min(newCount, credits.cast.length); // Ensure not exceeding total length
     });
   };
 
   return (
     <Box mt={8}>
       <Heading size="lg">Credits-Cast</Heading>
-      <SimpleGrid columns={[2, 3,4, 5,6]} spacing={4}>
+      <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={4}>
         {credits.cast.slice(0, visibleCount).map((cast, index) => (
           <Flex
             align="center"
@@ -51,10 +48,9 @@ const PersonCredits = ({ credits, navigate }) => {
                 aspectRatio="4/5"
                 src={`https://image.tmdb.org/t/p/w500${cast.poster_path}`}
                 alt={cast.title || cast.name}
-                
               />
             ) : (
-              <Text   px={8} py={28} mb={2}>No poster available</Text>
+              <Text px={8} py={28} mb={2}>No poster available</Text>
             )}
             <Text fontWeight="bold">{cast.title || cast.name}</Text>
             <Text fontWeight="200" fontStyle="italic">{cast.character}</Text>
@@ -63,7 +59,7 @@ const PersonCredits = ({ credits, navigate }) => {
           </Flex>
         ))}
       </SimpleGrid>
-      {showMore && (
+      {credits.cast.length > 6 && visibleCount < credits.cast.length && (
         <Button mt={4} onClick={handleShowMoreClick} colorScheme="teal">
           Show More
         </Button>

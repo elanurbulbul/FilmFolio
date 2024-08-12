@@ -6,32 +6,29 @@ import {
   Text,
   Button,
   Image,
-  Tooltip,
   Heading,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-const PersonCrew = ({ credits, navigate }) => {
+const PersonCrew = ({ credits }) => {
   const [visibleCount, setVisibleCount] = useState(6);
-  const [showMore, setShowMore] = useState(true);
+  const navigate = useNavigate();
 
-  const handleCreditClick = (cast) => {
-    if (cast.title) {
-      navigate(`/movies/${cast.id}`);
-    } else if (cast.name) {
-      navigate(`/tvshows/${cast.id}`);
+  const handleCreditClick = (crew) => {
+    if (crew.title) {
+      navigate(`/movies/${crew.id}`);
+    } else if (crew.name) {
+      navigate(`/tvshows/${crew.id}`);
     }
   };
 
   const handleShowMoreClick = () => {
     setVisibleCount((prevCount) => {
       const newCount = prevCount + 6;
-      if (newCount >= credits.crew.length) {
-        setShowMore(false);
-        return credits.crew.length;
-      }
-      return newCount;
+      return Math.min(newCount, credits.crew.length); // Ensure not exceeding total length
     });
   };
+
   return (
     <Box mt={8}>
       <Heading>Credits-Crew</Heading>
@@ -66,23 +63,21 @@ const PersonCrew = ({ credits, navigate }) => {
                 No poster available
               </Text>
             )}
-              <Text fontWeight="bold" mb={2} >
-                {crew.title || crew.name}
-              </Text>
-            
+            <Text fontWeight="bold" mb={2}>
+              {crew.title || crew.name}
+            </Text>
             <Text fontSize="sm" color="gray.500">
-            Department: {crew.department ? crew.department : "Unknown"}
-            Job: {crew.job}
+              Department: {crew.department ? crew.department : "Unknown"}
+              <br />
+              Job: {crew.job}
               <Text fontSize="sm" noOfLines={3}>
-              {crew.overview ? crew.overview : "No overview available"}
+                {crew.overview ? crew.overview : "No overview available"}
+              </Text>
             </Text>
-            </Text>
-            
-           
           </Flex>
         ))}
       </SimpleGrid>
-      {showMore && (
+      {credits.crew.length > 6 && visibleCount < credits.crew.length && (
         <Button mt={4} onClick={handleShowMoreClick} colorScheme="teal">
           Show More
         </Button>
