@@ -16,11 +16,9 @@ const TvShowDetailapi = () => {
   const [tvShowDetail, setTvShowDetail] = useState(null);
 
   const getTvShowDetail = () => {
-    const apiUrl = `${
-      import.meta.env.VITE_API_BASE_URL
-    }/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${
-      import.meta.env.VITE_API_KEY
-    }`;
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL
+      }/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY
+      }`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -45,39 +43,39 @@ const TvShowDetailapi = () => {
   );
 
   return (
-    <Stack my={20}>
+    <Stack mx={{base:"40px", sm:"70px" ,md:"100px"}} my={20}>
       <Stack>
         <TVShowName name={tvShowDetail.name} />
-        <Flex align="center">
-          <StarIcon color="yellow.400" boxSize="1.3rem" mr={1}/>
-          <Text fontSize="24px" ml={1}>{tvShowDetail.vote_average.toFixed(2)}</Text>
+        <Flex marginTop="-20px" align="center">
+          <StarIcon color="yellow.400" boxSize="1.3rem" mr={1} />
+          <Text fontSize="20px" ml={1}>{tvShowDetail.vote_average.toFixed(2)}</Text>
         </Flex>
-       
+
 
         <Flex>
           <TvShowPoster posterPath={tvShowDetail.poster_path} title={tvShowDetail.name} />
           <Trailer title={tvShowDetail.name} trailer={officialTrailer} posterPath={tvShowDetail.poster_path} />
         </Flex>
       </Stack>
-        <Stack>
-        <Flex>
-          <Text mr={1}>{tvShowDetail.first_air_date}</Text> 
-          <Text>/ {tvShowDetail.last_air_date}</Text>
+
+
+
+      <Stack>
+      <Flex justifyContent="start" alignItems="center">
+      
+          <GenreList first_air_date={tvShowDetail.first_air_date} genres={tvShowDetail.genres} />
+
         </Flex>
-        <GenreList genres={tvShowDetail.genres} />
-
-        </Stack>
-
-        <Stack py={2} textAlign="start">
-        <Text fontWeight="600" fontSize="25px">
-          Summary
-        </Text>
         <TVShowDetails
           overview={tvShowDetail.overview}
           seasons={tvShowDetail.number_of_seasons}
           episodes={tvShowDetail.number_of_episodes}
         />
       </Stack>
+
+
+
+
 
       <Stack pb={2} ></Stack>
 

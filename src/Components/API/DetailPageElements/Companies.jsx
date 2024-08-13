@@ -1,5 +1,6 @@
 import React from "react";
 import { SimpleGrid, Image, Text, Box, Stack } from "@chakra-ui/react";
+import {  DiAndroid } from "react-icons/di";
 
 const Company = ({ companies }) => {
   return (
@@ -32,7 +33,7 @@ const Company = ({ companies }) => {
                 borderRadius="md"
                 
               >
-                <Text fontSize="14px">No Logo</Text>
+                < DiAndroid/>
               </Box>
             )}
             <Text mt={2}  fontSize="14px">

@@ -67,7 +67,7 @@ const RecommendationList = ({ recommendations }) => {
                 _hover={{ textDecoration: 'none' }} // Ensures no underline on hover
               >
                 <Image
-                  aspectRatio="3/5"
+                  aspectRatio="2/3"
                   src={`https://image.tmdb.org/t/p/w500${recommendation.poster_path}`}
                   alt={recommendation.name || recommendation.title}
                   borderRadius="md"

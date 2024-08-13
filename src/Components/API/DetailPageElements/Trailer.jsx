@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Button, Text, Image, Icon, Stack } from "@chakra-ui/react";
-import { MdPlayArrow } from "react-icons/md"; // YouTube izleme ikonu
+import { Box, Button, Image, Icon, useDisclosure } from "@chakra-ui/react";
+import { MdPlayArrow } from "react-icons/md"; // YouTube play icon
+import { PiFilmSlate } from "react-icons/pi"; // Film slate icon from react-icons
 
 import {
   Modal,
@@ -10,26 +11,26 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
 } from "@chakra-ui/react";
+
+const placeholderThumbnail = 'https://via.placeholder.com/640x360.png?text=';
 
 const Trailer = ({ trailer, name, title, posterPath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const displayName = name || title;
-  
-  
-  const getVideoThumbnail = (videoId) => `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+  const getVideoThumbnail = (videoId) =>
+    `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   return (
-    <Box  position="relative"  alignSelf="end" >
+    <Box position="relative" alignSelf="end">
       {trailer ? (
         <>
-          <Image 
+          <Image
             width="100%"
             height="auto"
-            maxWidth="480px"
-            aspectRatio="5/4"
-            src={getVideoThumbnail(trailer.key)} 
+            aspectRatio="4/3"
+            src={getVideoThumbnail(trailer.key)}
             alt="Watch Trailer"
             cursor="pointer"
             onClick={onOpen}
@@ -48,7 +49,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
             cursor="pointer"
             onClick={onOpen}
           >
-            <Icon  as={MdPlayArrow} />
+            <Icon as={MdPlayArrow} />
           </Box>
 
           <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -79,8 +80,38 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
           </Modal>
         </>
       ) : (
-        <Box   border="1px" p={3} borderRadius="lg" fontSize="20px" color="gray" fontWeight="bold">
-           No trailer available! 
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          border="1px"
+          borderColor="gray.300"
+          aspectRatio="4/3"
+          width="100%"
+          maxWidth="480px"
+          height="auto"
+          borderRadius="lg"
+          bg="gray.100"
+          position="relative"
+        >
+          <Image
+            width="100%"
+            height="100%"
+            objectFit="cover"
+            borderRadius="lg"
+            src={placeholderThumbnail}
+            alt="No Trailer Available"
+          />
+          <Box
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            color="gray.500"
+            fontSize="50px"
+          >
+            <Icon as={PiFilmSlate} />
+          </Box>
         </Box>
       )}
     </Box>

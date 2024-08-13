@@ -9,7 +9,7 @@ export const TVShowName = ({ name }) => (
 
 export const TVShowDetails = ({ overview, seasons, episodes }) => (
   <>
-    <Text fontSize="lg" mb={4}>
+    <Text textAlign="start" fontSize="lg" mb={4}>
       {overview}
     </Text>
     <Flex mb={2}>

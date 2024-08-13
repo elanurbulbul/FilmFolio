@@ -7,9 +7,8 @@ const Poster = ({ posterPath, name }) => (
   <Image
     width="100%"
     height="auto"
-    maxWidth="288px"
-    maxHeight="385px"
-    aspectRatio="3/4"
+    maxWidth="240px"
+    aspectRatio="2/3"
     src={`https://image.tmdb.org/t/p/w500${posterPath}`}
     alt={name}
     borderRadius="lg"
