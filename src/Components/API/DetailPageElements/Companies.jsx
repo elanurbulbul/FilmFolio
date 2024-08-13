@@ -14,7 +14,9 @@ const Company = ({ companies }) => {
               <Image
                 src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
                 alt={company.name}
-                boxSize="125px"
+                width="100%"
+                height="auto"
+                aspectRatio="1/1"
                 objectFit="contain"
                 m="auto" 
               />
@@ -23,9 +25,12 @@ const Company = ({ companies }) => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                boxSize="125px"
                 borderWidth="1px"
+                width="100%"
+                height="auto"
+                aspectRatio="1/1"
                 borderRadius="md"
+                
               >
                 <Text fontSize="14px">No Logo</Text>
               </Box>
