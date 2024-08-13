@@ -14,7 +14,7 @@ const TvTrending = () => {
     <Box my={4}>
        <Flex justifyContent="space-between" alignItems="center" mx={3}>
         <Stack direction="column" display="flex">
-        <Heading whiteSpace={"nowrap"} textAlign="start" fontSize={{base:"22px", md:"30px"}}>TOP 20 TV SHOWS</Heading>
+        <Heading whiteSpace={"nowrap"} textAlign="start" fontSize={{base:"22px", md:"30px"}}>TOP 20 SHOWS</Heading>
         </Stack>
        
 
