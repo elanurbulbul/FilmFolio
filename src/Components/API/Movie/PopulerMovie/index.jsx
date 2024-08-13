@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/MovieCards/list";
-import { Box, Spinner, Center } from "@chakra-ui/react";
+import { Box, Spinner, Center, Heading } from "@chakra-ui/react";
 
 const PopulerMovie = () => {
   const [movieList, setMovieList] = useState([]);
@@ -8,9 +8,9 @@ const PopulerMovie = () => {
 
 
   const getMovie = () => {
-    
+
     fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/movie/popular?language=en-US&page=1&api_key=${import.meta.env.VITE_API_KEY}`   )
+      `${import.meta.env.VITE_API_BASE_URL}/movie/popular?language=en-US&page=1&api_key=${import.meta.env.VITE_API_KEY}`)
       .then((res) => res.json())
       .then((json) => {
         setMovieList(json.results);
@@ -28,14 +28,18 @@ const PopulerMovie = () => {
 
   return (
     <Box p="3">
-    {loading ? (
-      <Center>
-        <Spinner size="xl" />
-      </Center>
-    ) : (
-      <List movieList={movieList} />
-    )}
-  </Box>
+      {loading ? (
+        <Center>
+          <Spinner size="xl" />
+        </Center>
+      ) : (
+        <>
+          <Heading as="h4" fontWeight="500" textAlign="start">Populer Movies</Heading>
+          <List movieList={movieList} />
+        </>
+
+      )}
+    </Box>
   );
 };
 

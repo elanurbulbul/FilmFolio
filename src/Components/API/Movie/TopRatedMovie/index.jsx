@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/MovieCards/list";
-import { Box, Spinner, Center } from "@chakra-ui/react";
+import { Box, Spinner, Center, Heading } from "@chakra-ui/react";
 
 const TopRatedMovie = () => {
   const [movieList, setMovieList] = useState([]);
@@ -33,7 +33,11 @@ const TopRatedMovie = () => {
         <Spinner size="xl" />
       </Center>
     ) : (
+      <>
+      <Heading mt="20" as="h4" fontWeight="500" textAlign="start">Top Rated</Heading>
       <List movieList={movieList} />
+    </>
+
     )}
   </Box>
   );
