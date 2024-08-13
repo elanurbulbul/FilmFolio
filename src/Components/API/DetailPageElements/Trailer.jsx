@@ -23,7 +23,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
     `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   return (
-    <Box position="relative" alignSelf="end">
+    <Box position="relative" alignSelf="center">
       {trailer ? (
         <>
           <Image

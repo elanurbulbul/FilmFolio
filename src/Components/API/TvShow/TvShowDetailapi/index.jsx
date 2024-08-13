@@ -43,7 +43,7 @@ const TvShowDetailapi = () => {
   );
 
   return (
-    <Stack mx={{base:"40px", sm:"70px" ,md:"100px"}} my={20}>
+    <Stack  my={20}>
       <Stack>
         <TVShowName name={tvShowDetail.name} />
         <Flex marginTop="-20px" align="center">
