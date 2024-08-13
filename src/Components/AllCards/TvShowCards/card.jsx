@@ -33,13 +33,11 @@ const TvCard = ({ tv }) => {
       onClick={handleDetailClick}
       cursor="pointer"
       transition="transform 0.2s"
-      _hover={{ transform: "scale(1.05)", 
-        mx:"6px" 
-      }}
+      
     >
       <Image
         width="100%"
-        aspectRatio={2 / 3}
+        aspectRatio="2/3"
         height="auto"
         borderTopRadius="8px"
         src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}

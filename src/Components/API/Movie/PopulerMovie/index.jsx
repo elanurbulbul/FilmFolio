@@ -34,7 +34,7 @@ const PopulerMovie = () => {
         </Center>
       ) : (
         <>
-          <Heading as="h4" fontWeight="500" textAlign="start">Populer Movies</Heading>
+          <Heading px="2px" as="h4" fontWeight="500" textAlign="start">Populer Movies</Heading>
           <List movieList={movieList} />
         </>
 

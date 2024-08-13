@@ -35,7 +35,7 @@ const UpComingMovie = () => {
       </Center>
     ) : (
       <>
-      <Heading mt={20}  as="h4" fontWeight="500" textAlign="start">Up Coming</Heading>
+      <Heading px="2px" mt={20}  as="h4" fontWeight="500" textAlign="start">Up Coming</Heading>
       <List movieList={movieList} />
     </>
 
