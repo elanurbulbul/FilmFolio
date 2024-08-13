@@ -21,6 +21,7 @@ import {
   InputGroup,
   InputRightElement,
   useToast,
+  Container,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -65,7 +66,8 @@ export default function Navbar() {
   };
 
   return (
-    <Box zIndex={10} position="relative">
+    <Container maxW={{ base: 'container.sm', md: "container.md", lg: "container.lg", xl: "container.xl" }}>
+       <Box zIndex={10} position="relative">
       <Flex
         spacing={5}
         bg={useColorModeValue("white", "gray.800")}
@@ -74,7 +76,6 @@ export default function Navbar() {
         py={{ base: 1 }}
         px={{ base: 3 }}
         borderBottom={1}
-        borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
@@ -224,5 +225,7 @@ export default function Navbar() {
         <MobileNav />
       </Collapse>
     </Box>
+    </Container>
+   
   );
 }
