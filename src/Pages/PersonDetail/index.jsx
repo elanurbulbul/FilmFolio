@@ -6,12 +6,12 @@ import { Container } from "@chakra-ui/react";
 const PersonDetail = () => {
   return (
     <Container
-      maxW={{
-        base: "container.xs",
-        md: "container.sm",
-        lg: "container.md",
-        xl: "container.lg",
-      }}
+    maxW={{
+      sm:"container.sm",
+      md: "container.md",
+      lg: "container.md",
+      xl: "container.lg",
+    }}
     >
     <PersonDetailapi />
   </Container>

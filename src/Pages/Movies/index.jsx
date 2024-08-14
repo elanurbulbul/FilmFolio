@@ -7,7 +7,7 @@ import UpComingMovie from "../../Components/API/Movie/UpComingMovie";
 
 const Movies = () => {
   return (
-    <Container maxW={{ base: 'container.sm', md: "container.md", lg: "container.lg", xl: "container.xl" }}>
+    <Container maxW={{ base: 'container.sm', md: "container.lg", lg: "container.lg", xl: "container.xl" }}>
       <Box my={20}>
         <PopulerMovie />
         <NowPlayingMovie />

@@ -6,8 +6,8 @@ const MoviesDetail = () => {
   return (
     <Container
       maxW={{
-        base: "container.xs",
-        md: "container.sm",
+        sm:"container.sm",
+        md: "container.md",
         lg: "container.md",
         xl: "container.lg",
       }}

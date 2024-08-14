@@ -7,7 +7,7 @@ import TopRatedTv from "../../Components/API/TvShow/TopRatedTv";
 
 const TvShows = () => {
   return (
-    <Container  maxW={{base:'container.sm',md:"container.md", lg:"container.lg", xl:"container.xl"}}>
+    <Container maxW={{ base: 'container.sm', md: "container.lg", lg: "container.lg", xl: "container.xl" }}>
       <Heading>Populer</Heading>
       <PopulerTvShow />
       <Heading>Airing Today </Heading>

@@ -66,7 +66,7 @@ export default function Navbar() {
   };
 
   return (
-    <Container maxW={{ base: 'container.sm', md: "container.md", lg: "container.lg", xl: "container.xl" }}>
+    <Container maxW={{ base: 'container.sm', md: "container.lg", lg: "container.lg", xl: "container.xl" }}>
        <Box zIndex={10} position="relative">
       <Flex
         spacing={5}
@@ -74,17 +74,17 @@ export default function Navbar() {
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 1 }}
-        px={{ base: 3 }}
+        px={{ base: 0 }}
         borderBottom={1}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
         >
           <IconButton
+            style={{marginLeft:"-10px"}}
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />

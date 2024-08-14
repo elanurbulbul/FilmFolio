@@ -46,7 +46,7 @@ const TvShowDetailapi = () => {
     <Stack  my={20}>
       <Stack>
         <TVShowName name={tvShowDetail.name} />
-        <Flex marginTop="-12px" align="center">
+        <Flex marginTop="-15px" mb="-5px"  align="center">
           <StarIcon color="yellow.400" boxSize="1.3rem" mr={1} />
           <Text fontSize="20px" ml={1}>{tvShowDetail.vote_average.toFixed(2)}</Text>
         </Flex>
@@ -61,7 +61,7 @@ const TvShowDetailapi = () => {
 
 
       <Stack>
-      <Flex justifyContent="start" alignItems="center">
+      <Flex mb="-8px" justifyContent="start" alignItems="center">
       
           <GenreList first_air_date={tvShowDetail.first_air_date} genres={tvShowDetail.genres} />
 
