@@ -58,7 +58,7 @@ const MovieDetailapi = () => {
           title={movieDetail.title}
           homepage={movieDetail.homepage}
         />
-        <Flex marginTop="-20px" align="center">
+        <Flex marginTop="-15px" align="center">
           <StarIcon color="yellow.400" boxSize="1.2rem" mr={1} />
           <Text fontSize="20px" ml={1}>
             {movieDetail.vote_average.toFixed(2)}

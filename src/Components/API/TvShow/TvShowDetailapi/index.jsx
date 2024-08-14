@@ -46,7 +46,7 @@ const TvShowDetailapi = () => {
     <Stack  my={20}>
       <Stack>
         <TVShowName name={tvShowDetail.name} />
-        <Flex marginTop="-20px" align="center">
+        <Flex marginTop="-12px" align="center">
           <StarIcon color="yellow.400" boxSize="1.3rem" mr={1} />
           <Text fontSize="20px" ml={1}>{tvShowDetail.vote_average.toFixed(2)}</Text>
         </Flex>
