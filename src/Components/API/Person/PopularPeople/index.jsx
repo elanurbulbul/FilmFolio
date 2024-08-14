@@ -36,8 +36,14 @@ const PopulerPeople = () => {
   return (
     <Box my={10} >
       {loading ? (
-        <Center  mt={4}>
-          <Spinner size="xl" />
+        <Center  height="100vh">
+        <Spinner
+        
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="gray.400"
+          size="xl" />
         </Center>
       ) : (
         <>

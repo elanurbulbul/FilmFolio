@@ -34,8 +34,9 @@ const MovieDetailapi = () => {
 
   if (!movieDetail) {
     return (
-      <Center>
+      <Center height="100vh">
         <Spinner
+        
           thickness="4px"
           speed="0.65s"
           emptyColor="gray.200"

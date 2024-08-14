@@ -32,7 +32,7 @@ const TvShowDetailapi = () => {
 
   if (!tvShowDetail) {
     return (
-      <Center>
+      <Center height="100vh">
         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="gray.400" size="xl" />
       </Center>
     );
