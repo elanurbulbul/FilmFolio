@@ -85,14 +85,14 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
           alignItems="center"
           justifyContent="center"
           border="1px"
-          borderColor="gray.300"
+          borderColor="gray.100"
           aspectRatio="4/3"
           width="100%"
           maxWidth="480px"
           height="auto"
           borderRadius="lg"
-          bg="gray.100"
           position="relative"
+
         >
           <Image
             width="100%"

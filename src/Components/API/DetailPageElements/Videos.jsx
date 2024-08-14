@@ -15,7 +15,7 @@ const VideoList = ({ videos }) => {
 
   return (
     <Box mb={8} py={4}>
-      <Text textAlign="start" fontWeight="600" fontSize="30px" mb={4}>
+      <Text textAlign="start" fontWeight="600" fontSize="30px" mb={3}>
         Teasers and Scenes 
       </Text>
 

@@ -42,7 +42,6 @@ const RecommendationList = ({ recommendations }) => {
         style={{ width: '100%' }}
       >
         {recommendations.map((recommendation) => {
-          // Determine type and href based on recommendation
           const type = recommendation.name ? 'tvshows' : 'movies';
           const href = `/${type}/${recommendation.id}`;
 

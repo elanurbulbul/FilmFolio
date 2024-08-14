@@ -28,7 +28,7 @@ const NowPlayingMovie = () => {
   return (
     <Box p="3">
       {loading ? (
-        <Center>
+        <Center >
           <Spinner size="xl" />
         </Center>
       ) : (

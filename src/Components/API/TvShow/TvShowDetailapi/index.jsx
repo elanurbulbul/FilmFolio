@@ -16,14 +16,12 @@ const TvShowDetailapi = () => {
   const [tvShowDetail, setTvShowDetail] = useState(null);
 
   const getTvShowDetail = () => {
-    const apiUrl = `${import.meta.env.VITE_API_BASE_URL
-      }/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY
-      }`;
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
 
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => setTvShowDetail(data))
-      .catch((err) => console.error("Error fetching tv details:", err));
+      .catch((err) => console.error("Error fetching TV show details:", err));
   };
 
   useEffect(() => {
@@ -42,30 +40,35 @@ const TvShowDetailapi = () => {
     (video) => video.type === "Trailer" && video.official
   );
 
+  const hasGenres = tvShowDetail.genres && tvShowDetail.genres.length > 0;
+  const hasCast = tvShowDetail.credits && tvShowDetail.credits.cast && tvShowDetail.credits.cast.length > 0;
+  const hasVideos = tvShowDetail.videos && tvShowDetail.videos.results && tvShowDetail.videos.results.length > 0;
+  const hasCompanies = tvShowDetail.production_companies && tvShowDetail.production_companies.length > 0;
+  const hasRecommendations = tvShowDetail.recommendations && tvShowDetail.recommendations.results && tvShowDetail.recommendations.results.length > 0;
+
   return (
-    <Stack  my={20}>
+    <Stack my={20}>
       <Stack>
         <TVShowName name={tvShowDetail.name} />
-        <Flex marginTop="-15px" mb="-5px"  align="center">
+        <Flex marginTop="-15px" mb="-5px" align="center">
           <StarIcon color="yellow.400" boxSize="1.3rem" mr={1} />
           <Text fontSize="20px" ml={1}>{tvShowDetail.vote_average.toFixed(2)}</Text>
         </Flex>
 
-
         <Flex>
           <TvShowPoster posterPath={tvShowDetail.poster_path} title={tvShowDetail.name} />
-          <Trailer title={tvShowDetail.name} trailer={officialTrailer} posterPath={tvShowDetail.poster_path} />
+        
+            <Trailer title={tvShowDetail.name} trailer={officialTrailer} posterPath={tvShowDetail.poster_path} />
+        
         </Flex>
       </Stack>
 
-
-
       <Stack>
-      <Flex mb="-8px" justifyContent="start" alignItems="center">
-      
-          <GenreList first_air_date={tvShowDetail.first_air_date} genres={tvShowDetail.genres} />
-
-        </Flex>
+        {hasGenres && (
+          <Flex mb="-8px" justifyContent="start" alignItems="center">
+            <GenreList first_air_date={tvShowDetail.first_air_date} genres={tvShowDetail.genres} />
+          </Flex>
+        )}
         <TVShowDetails
           overview={tvShowDetail.overview}
           seasons={tvShowDetail.number_of_seasons}
@@ -73,16 +76,12 @@ const TvShowDetailapi = () => {
         />
       </Stack>
 
-
-
-
-
-      <Stack pb={2} ></Stack>
-
-      <CastList cast={tvShowDetail.credits.cast} />
-      <VideoList videos={tvShowDetail.videos.results} />
-      <Company companies={tvShowDetail.production_companies} />
-      <RecommendationList recommendations={tvShowDetail.recommendations.results} />
+      <Stack pb={2}>
+        {hasCast && <CastList cast={tvShowDetail.credits.cast} />}
+        {hasVideos && <VideoList videos={tvShowDetail.videos.results} />}
+        {hasCompanies && <Company companies={tvShowDetail.production_companies} />}
+        {hasRecommendations && <RecommendationList recommendations={tvShowDetail.recommendations.results} />}
+      </Stack>
     </Stack>
   );
 };

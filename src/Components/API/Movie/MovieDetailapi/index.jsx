@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
-import { Spinner, Stack, Text, Center, Flex, Badge } from "@chakra-ui/react";
+import { Spinner, Stack, Text, Center, Flex } from "@chakra-ui/react";
 import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
 import GenreList from "../../DetailPageElements/GenreList";
@@ -16,11 +16,7 @@ const MovieDetailapi = () => {
   const [movieDetail, setMovieDetail] = useState(null);
 
   const getMovieDetail = () => {
-    const apiUrl = `${
-      import.meta.env.VITE_API_BASE_URL
-    }/movie/${movieId}?append_to_response=videos,vote_average,release_date,genres,images,people,credits,recommendations&language=en-US&api_key=${
-      import.meta.env.VITE_API_KEY
-    }`;
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/movie/${movieId}?append_to_response=videos,vote_average,release_date,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -36,7 +32,6 @@ const MovieDetailapi = () => {
     return (
       <Center height="100vh">
         <Spinner
-        
           thickness="4px"
           speed="0.65s"
           emptyColor="gray.200"
@@ -50,6 +45,12 @@ const MovieDetailapi = () => {
   const officialTrailer = movieDetail.videos.results.find(
     (video) => video.type === "Trailer" && video.official
   );
+
+  const hasGenres = movieDetail.genres && movieDetail.genres.length > 0;
+  const hasCast = movieDetail.credits && movieDetail.credits.cast && movieDetail.credits.cast.length > 0;
+  const hasVideos = movieDetail.videos && movieDetail.videos.results && movieDetail.videos.results.length > 0;
+  const hasCompanies = movieDetail.production_companies && movieDetail.production_companies.length > 0;
+  const hasRecommendations = movieDetail.recommendations && movieDetail.recommendations.results && movieDetail.recommendations.results.length > 0;
 
   return (
     <Stack my={20}>
@@ -65,39 +66,43 @@ const MovieDetailapi = () => {
           </Text>
         </Flex>
 
-        <Flex >
+        <Flex>
           <MoviePoster
             posterPath={movieDetail.poster_path}
             title={movieDetail.title}
           />
-
-          <Trailer
-            title={movieDetail.title}
-            trailer={officialTrailer}
-            posterPath={movieDetail.poster_path}
-          />
+        
+            <Trailer
+              title={movieDetail.title}
+              trailer={officialTrailer}
+              posterPath={movieDetail.poster_path}
+            />
+          
         </Flex>
       </Stack>
 
-      <Stack   textAlign="start">
-        <Flex mb="-8px" justifyContent="start" alignItems="center">
-          <GenreList
-            release_date={movieDetail.release_date}
-            genres={movieDetail.genres}
-          />
-        </Flex>
+      <Stack textAlign="start">
+        {hasGenres && (
+          <Flex mb="-8px" justifyContent="start" alignItems="center">
+            <GenreList
+              release_date={movieDetail.release_date}
+              genres={movieDetail.genres}
+            />
+          </Flex>
+        )}
 
         <MovieHeader overview={movieDetail.overview} />
       </Stack>
 
       <Stack mt={16} pb={2}>
-        <CastList cast={movieDetail.credits.cast} />
-
-        <VideoList videos={movieDetail.videos.results}  />
-        <Company companies={movieDetail.production_companies} />
-        <RecommendationList
-          recommendations={movieDetail.recommendations.results}
-        />
+        {hasCast && <CastList cast={movieDetail.credits.cast} />}
+        {hasVideos && <VideoList videos={movieDetail.videos.results} />}
+        {hasCompanies && <Company companies={movieDetail.production_companies} />}
+        {hasRecommendations && (
+          <RecommendationList
+            recommendations={movieDetail.recommendations.results}
+          />
+        )}
       </Stack>
     </Stack>
   );
