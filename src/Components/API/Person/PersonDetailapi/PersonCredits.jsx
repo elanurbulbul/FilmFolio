@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { SimpleGrid, Flex, Image, Text, Box, Heading, Button } from "@chakra-ui/react";
+import {
+  SimpleGrid,
+  Flex,
+  Image,
+  Text,
+  Box,
+  Heading,
+  Button,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { FaPhotoFilm } from "react-icons/fa6";
 
 const PersonCredits = ({ credits }) => {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -22,42 +31,59 @@ const PersonCredits = ({ credits }) => {
   };
 
   return (
-    <Box mt={8} >
-      <Heading textAlign="start" fontSize="30px">Credits (Cast)</Heading>
-      <Text textAlign="start" my={3}>Many movies and TV series she/he worked in as an actor</Text>
+    <Box mt={8}>
+      <Heading textAlign="start" fontSize="30px">
+        Credits (Cast)
+      </Heading>
+      <Text textAlign="start" my={3}>
+        Many movies and TV series she/he worked in as an actor
+      </Text>
       <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={4}>
         {credits.cast.slice(0, visibleCount).map((cast, index) => (
-          <Flex
-            align="center"
-            justifyContent="space-between"
-            direction="column"
+          <Box
+            key={cast.id || index}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignContent="center"
             textAlign="center"
-            key={index}
-            p={4}
             borderWidth={1}
-            borderRadius="lg"
+            borderRadius="md"
             onClick={() => handleCreditClick(cast)}
             cursor="pointer"
-            _hover={{ bg: "gray.500" }}
+            _hover={{ bg: "gray.600" }}
           >
             {cast.poster_path ? (
               <Image
-                borderRadius="md"
+                borderTopRadius="md"
                 width="100%"
                 height="auto"
                 maxWidth="200px"
-                aspectRatio="4/5"
+                aspectRatio="2/3"
                 src={`https://image.tmdb.org/t/p/w500${cast.poster_path}`}
                 alt={cast.title || cast.name}
               />
             ) : (
-              <Text px={8} py="14" mb={2}>No poster available</Text>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                width="100%"
+                height="auto"
+                aspectRatio={2 / 3}
+                backgroundColor="gray.400"
+                borderRadius="8px"
+              >
+                <FaPhotoFilm boxSize="50px" color="gray.500" />
+              </Box>
             )}
-            <Text fontWeight="bold" noOfLines={2}>{cast.title || cast.name}</Text>
-            <Text fontWeight="200" fontStyle="italic">{cast.character}</Text>
-            <Text>{cast.release_date}</Text>
-            <Text noOfLines={3}>{cast.overview ? cast.overview : "No overview available"}</Text>
-          </Flex>
+            <Text fontWeight="bold" my={2} px={1} isTruncated>
+              {cast.title || cast.name}
+            </Text>
+            <Text isTruncated px={2} fontWeight="100" mb={1} fontStyle="italic">
+              {cast.character}
+            </Text>
+          </Box>
         ))}
       </SimpleGrid>
       {credits.cast.length > 6 && visibleCount < credits.cast.length && (

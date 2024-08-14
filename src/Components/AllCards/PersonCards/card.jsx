@@ -32,7 +32,6 @@ const PersonCard = ({ person }) => {
       onClick={handleDetailClick}
       cursor="pointer"
       transition="transform 0.2s"
-      _hover={{ transform: "scale(1.05)" }}
     >
       <Image
         width="100%"

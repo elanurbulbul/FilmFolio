@@ -1,28 +1,30 @@
-import React from "react";
-import { Text, Box, Card, Stack, Heading } from "@chakra-ui/react";
-import "./index.scss";
+import React, { useState } from "react";
+import { Text, Box, Stack, Heading, Flex, Button } from "@chakra-ui/react";
 
 const PersonHeader = ({ personDetail }) => {
+   
   return (
-    <Stack textAlign="start">
-      <Heading textAlign="start" fontWeight="600" fontSize="35px" mb={5}>
+    <Stack textAlign="start" spacing={4}>
+      <Heading textAlign="start" fontWeight="600" fontSize="35px">
         {personDetail.name}
       </Heading>
-        <Stack>
-        <Text mt={5}>
-        <strong>Birthday:</strong> {personDetail.birthday || "Not available"}
-      </Text>
-      <Text>
-        <strong>Place of Birth:</strong>{" "}
-        {personDetail.place_of_birth || "Not available"}
-      </Text>
-        </Stack>
-     
-      <Text mt={3} >
-        
+      <Stack>
+        <Box>
+          <Text>
+            <strong>Birthday:</strong>{" "}
+            {personDetail.birthday || "There is no information about birthday."}
+          </Text>
+          <Text>
+            <strong>Place of Birth:</strong>{" "}
+            {personDetail.place_of_birth || "There is no information about the place."}
+          </Text>
+        </Box>
+      </Stack>
+
+      <Text mt="-10px" fontSize="lg">
         {personDetail.biography
           ? personDetail.biography
-          : "No biography available"}
+          : "There is no information about biography."}
       </Text>
       
     </Stack>

@@ -9,6 +9,8 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { FaPhotoFilm } from "react-icons/fa6";
+
 
 const PersonCrew = ({ credits }) => {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -35,47 +37,52 @@ const PersonCrew = ({ credits }) => {
       <Text textAlign="start" my={3}>Apart from acting, she/he has worked in many films and TV series in different departments.</Text>
       <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={4}>
         {credits.crew.slice(0, visibleCount).map((crew, index) => (
-          <Flex
-            align="center"
-            justifyContent="space-between"
-            direction="column"
-            textAlign="center"
-            key={index}
-            p={4}
-            borderWidth={1}
-            borderRadius="lg"
-            onClick={() => handleCreditClick(crew)}
-            cursor="pointer"
-            _hover={{ bg: "gray.700" }}
-          >
+          <Box
+          key={crew.id || index}
+          display="flex"
+          align="center"
+          justifyContent="center"
+          flexDirection="column"
+          textAlign="center"
+          borderWidth={1}
+          borderRadius="lg"
+          onClick={() => handleCreditClick(crew)}
+          cursor="pointer"
+        >
             {crew.poster_path ? (
               <Image
                 width="100%"
                 height="auto"
                 maxWidth="200px"
-                aspectRatio="4/5"
+                aspectRatio="2/3"
                 src={`https://image.tmdb.org/t/p/w200${crew.poster_path}`}
                 alt={crew.title || crew.name}
-                borderRadius="md"
-                mb={4}
+                borderTopRadius="md"
               />
-            ) : (
-              <Text px={8} py={20} mb={2}>
-                No poster available
-              </Text>
+            ) :   (
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                width="100%"
+                height="auto"
+                aspectRatio={2/3}
+                backgroundColor="gray.400"
+                borderTopRadius="8px"
+              >
+                <FaPhotoFilm boxSize="50px" color="gray.500" />
+              </Box>
             )}
-            <Text fontWeight="bold" noOfLines={2} mb={2}>
+            <Text fontWeight="bold" isTruncated px={1} my={2}>
               {crew.title || crew.name}
             </Text>
-            <Text fontSize="sm" color="gray.500">
+            <Text mb={1} px={1} fontSize="sm" color="gray.500">
               Department: {crew.department ? crew.department : "Unknown"}
               <br />
               Job: {crew.job}
-              <Text fontSize="sm" noOfLines={3}>
-                {crew.overview ? crew.overview : "No overview available"}
-              </Text>
+             
             </Text>
-          </Flex>
+          </Box>
         ))}
       </SimpleGrid>
       {credits.crew.length > 6 && visibleCount < credits.crew.length && (
