@@ -14,11 +14,11 @@ const MoviesTrending = () => {
     <Box my="50px" >
       <Flex justifyContent="space-between" alignItems="center" mx={3}>
         <Stack direction="column" display="flex">
-        <Heading textAlign="start" fontSize={{base:"22px", md:"30px"}}>TOP 20 MOVIES</Heading>
+        <Heading textAlign="start" fontSize={{base:"20px", md:"30px"}}>TOP 20 MOVIES</Heading>
         </Stack>
        
 
-        <Stack fontSize={{base:"16px", md:"20px"}} direction="row" display={"flex"} alignItems={"center"} spacing={1.5}>
+        <Stack fontSize={{base:"14px", md:"18px"}} direction="row" display={"flex"} alignItems={"center"} spacing={1.5}>
           <Text>DAILY</Text>
           <Switch
           size={{base:"md", md:"lg"}}
@@ -29,7 +29,7 @@ const MoviesTrending = () => {
           <Text >WEEKLY</Text>
         </Stack>
       </Flex>
-      <Text mx={3} mt={2}  textAlign="start" fontSize={{base:"16px", md:"20px"}} >You can see weekly or daily movies...</Text>
+      <Text mx={3} mt={2}  textAlign="start" fontSize={{base:"14px", md:"20px"}} >You can see weekly or daily movies...</Text>
       <Box>
         {isWeekly ? <WeeklyMovie /> : <DailyMovie />}
       </Box>

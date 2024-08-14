@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Route from './Components/Routes/Route';
 import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer';
+import { Stack } from '@chakra-ui/react';
 
 function App() {
 
@@ -14,7 +15,10 @@ function App() {
         <div className="content">
           <Route />
         </div>
+        <Stack bg="gray.700" >
         <Footer />
+        </Stack>
+        
       </Router>
     </div>
   );
