@@ -177,6 +177,7 @@ export default function Navbar() {
           </Button>
           <Button
             as={"a"}
+            px={5}
             fontSize={"sm"}
             fontWeight={600}
             color={"white"}
