@@ -8,7 +8,7 @@ const Company = ({ companies }) => {
       <Text textAlign="start" fontWeight="600" fontSize="25px">
         Production Companies
       </Text>
-      <SimpleGrid columns={{ base: 3,sm:4, md: 5, lg: 6 }} spacing={6}>
+      <SimpleGrid columns={{ base:3,sm:4, md: 5, lg: 6 }} spacing={6}>
         {companies.map((company) => (
           <Box key={company.id} p={2} textAlign="center">
             {company.logo_path ? (

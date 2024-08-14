@@ -18,28 +18,23 @@ const RecommendationList = ({ recommendations }) => {
         Recommended
       </Text>
       <Swiper
-        spaceBetween={20}
+        spaceBetween={5}
         slidesPerView={1}
         breakpoints={{
           320: {
             slidesPerView: 2,
-            spaceBetween: 5,
           },
           480: {
             slidesPerView: 3,
-            spaceBetween: 10,
           },
           640: {
             slidesPerView: 4,
-            spaceBetween: 15,
           },
           1024: {
             slidesPerView: 5,
-            spaceBetween: 20,
           },
           1280: {
             slidesPerView: 6,
-            spaceBetween: 25,
           },
         }}
         modules={[Navigation, Pagination]}
@@ -52,7 +47,7 @@ const RecommendationList = ({ recommendations }) => {
           const href = `/${type}/${recommendation.id}`;
 
           return (
-            <SwiperSlide key={recommendation.id}>
+            <SwiperSlide style={{padding:"1px 3px"}} key={recommendation.id}>
               <Box
                 as={Link}
                 to={href}
@@ -64,13 +59,13 @@ const RecommendationList = ({ recommendations }) => {
                 boxShadow="md"
                 paddingBottom={4}
                 textAlign="center"
-                _hover={{ textDecoration: 'none' }} // Ensures no underline on hover
+                _hover={{ textDecoration: 'none' }} 
               >
                 <Image
                   aspectRatio="2/3"
                   src={`https://image.tmdb.org/t/p/w500${recommendation.poster_path}`}
                   alt={recommendation.name || recommendation.title}
-                  borderRadius="md"
+                  borderTopRadius="md"
                   width="100%"
                   height="auto"
                 />

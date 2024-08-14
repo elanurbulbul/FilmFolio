@@ -49,7 +49,7 @@ const CastList = ({ cast }) => {
                   width="100%"
                   height="auto"
                   mb={2}
-                  borderWidth="2px"
+                  maxHeight={{bs:"200px", md:"240px"  }}                  
                   borderColor="gray.200"
                   aspectRatio={2 / 3}
                   borderTopRadius="8px"
@@ -76,7 +76,8 @@ const CastList = ({ cast }) => {
                 noOfLines={1}
                 overflow="hidden"
                 textOverflow="ellipsis"
-                mb={2}
+                mb={{bs:"1",md:"2"}}
+
               >
                 {castMember.name}
               </Text>
