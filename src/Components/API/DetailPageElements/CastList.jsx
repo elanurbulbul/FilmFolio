@@ -49,7 +49,6 @@ const CastList = ({ cast }) => {
                   width="100%"
                   height="auto"
                   mb={2}
-                  maxHeight={{bs:"200px", md:"240px"  }}                  
                   borderColor="gray.200"
                   aspectRatio={2 / 3}
                   borderTopRadius="8px"
