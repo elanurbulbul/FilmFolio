@@ -6,10 +6,10 @@ const TvShowsDetail = () => {
   return (
     <Container
     maxW={{
-      base: "container.sm",
-      md: "container.md",
-      lg: "container.lg",
-      xl: "container.xl",
+      base: "container.xs",
+      md: "container.sm",
+      lg: "container.md",
+      xl: "container.lg",
     }}
   >
     <TvShowDetailapi />

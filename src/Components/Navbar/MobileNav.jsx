@@ -45,7 +45,8 @@ const MobileNav = () => {
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}>
-      <InputGroup bg="gray.600" mb={2}>
+      <InputGroup bg="gray.600" mb={2}           borderRadius="md"
+      >
         <Input
           placeholder="Search..."
           value={searchTerm}
