@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Spinner, Box, Text, Stack,SimpleGrid } from "@chakra-ui/react";
+import { Spinner, Box, Text, Center, SimpleGrid } from "@chakra-ui/react";
 import MovieCard from "../../../AllCards/MovieCards/card";
 import TvCard from "../../../AllCards/TvShowCards/card";
 import PersonCard from "../../../AllCards/PersonCards/card";
@@ -30,7 +30,9 @@ const MultiSearch = ({ searchTerm }) => {
   }, [searchTerm]);
 
   if (loading) {
-    return <div><Spinner /></div>;
+    return <Center height="100vh">
+      <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="gray.400" size="xl" />
+    </Center>;
   }
 
   const sortedResults = multiSearch.reduce((acc, item) => {
@@ -50,22 +52,22 @@ const MultiSearch = ({ searchTerm }) => {
         <Box mb={6}>
           <Text fontSize="2xl" fontWeight="bold" mb={4}>Movies</Text>
           <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 5 }} spacing={4}>
-          {sortedResults.movies.map(movie => (
+            {sortedResults.movies.map(movie => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </SimpleGrid>
-          
+
         </Box>
       )}
       {sortedResults.tvShows.length > 0 && (
         <Box mb={6}>
           <Text fontSize="2xl" fontWeight="bold" mb={4}>TV Shows</Text>
           <SimpleGrid columns={{ base: 2, md: 3, lg: 4, xl: 5 }} spacing={4}>
-          {sortedResults.tvShows.map(tv => (
+            {sortedResults.tvShows.map(tv => (
               <TvCard key={tv.id} tv={tv} />
             ))}
           </SimpleGrid>
-          
+
         </Box>
       )}
       {sortedResults.people.length > 0 && (
@@ -76,7 +78,7 @@ const MultiSearch = ({ searchTerm }) => {
               <PersonCard key={person.id} person={person} />
             ))}
           </SimpleGrid>
-          </Box>
+        </Box>
       )}
     </Box>
   );
