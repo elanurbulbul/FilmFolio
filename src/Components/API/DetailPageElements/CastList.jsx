@@ -15,7 +15,7 @@ const CastList = ({ cast }) => {
 
   return (
     <Box mb={8} py={4}>
-      <Text textAlign="start" fontWeight="600" fontSize="25px" mb={4}>
+      <Text textAlign="start" fontWeight="600" fontSize="28px" mb={4}>
         Cast List
       </Text>
       <Swiper

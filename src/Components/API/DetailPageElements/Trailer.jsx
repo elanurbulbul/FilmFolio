@@ -30,6 +30,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
             width="100%"
             height="auto"
             aspectRatio="4/3"
+            maxWidth="480px"
             src={getVideoThumbnail(trailer.key)}
             alt="Watch Trailer"
             cursor="pointer"

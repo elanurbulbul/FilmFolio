@@ -5,7 +5,7 @@ import {  DiAndroid } from "react-icons/di";
 const Company = ({ companies }) => {
   return (
     <Stack spacing={4}>
-      <Text textAlign="start" fontWeight="600" fontSize="25px">
+      <Text textAlign="start" fontWeight="600" fontSize="28px">
         Production Companies
       </Text>
       <SimpleGrid columns={{ base:3,sm:4, md: 5, lg: 6 }} spacing={6}>

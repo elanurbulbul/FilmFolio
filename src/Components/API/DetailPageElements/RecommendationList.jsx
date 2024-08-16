@@ -4,17 +4,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Link, useLocation } from 'react-router-dom';
+import { FaPhotoFilm } from "react-icons/fa6";
+
 
 const RecommendationList = ({ recommendations }) => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top of the page
-  }, [location]); // Run this effect when location changes
+    window.scrollTo(0, 0); 
+  }, [location]); 
 
   return (
     <Box mt={10}>
-      <Text fontSize="25px" fontWeight="600" mb={8} textAlign="start">
+      <Text fontWeight="600" fontSize="28px" mb={8} textAlign="start">
         Recommended
       </Text>
       <Swiper
@@ -60,14 +62,29 @@ const RecommendationList = ({ recommendations }) => {
                 textAlign="center"
                 _hover={{ textDecoration: 'none' }} 
               >
-                <Image
-                  aspectRatio="2/3"
-                  src={`https://image.tmdb.org/t/p/w500${recommendation.poster_path}`}
-                  alt={recommendation.name || recommendation.title}
-                  borderTopRadius="md"
-                  width="100%"
-                  height="auto"
-                />
+                {recommendation.poster_path ? 
+                 <Image
+                 aspectRatio="2/3"
+                 src={`https://image.tmdb.org/t/p/w500${recommendation.poster_path}`}
+                 alt={recommendation.name || recommendation.title}
+                 borderTopRadius="md"
+                 width="100%"
+                 height="auto"
+               /> : (
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                width="100%"
+                height="auto"
+                aspectRatio={2 / 3}
+                backgroundColor="gray.400"
+                borderRadius="8px"
+              >
+                <FaPhotoFilm boxSize="50px" color="gray.500" />
+              </Box>
+            )}
+               
                 <Text mt={2} px="3" fontWeight="bold" noOfLines={1}>
                   {recommendation.name || recommendation.title}
                 </Text>
