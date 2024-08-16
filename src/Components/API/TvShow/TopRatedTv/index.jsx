@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/TvShowCards/list";
-import { Box, Spinner, Center } from "@chakra-ui/react";
+import { Box, Heading} from "@chakra-ui/react";
 
 
-const TopRated = () => {
+const TopRated = ({onDataLoaded}) => {
   const [tvList, setTvList] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const getTv = () => {
     
@@ -15,11 +14,11 @@ const TopRated = () => {
       .then((res) => res.json())
       .then((json) => {
         setTvList(json.results);
-        setLoading(false);
+        onDataLoaded(); 
       })
       .catch((error) => {
         console.error("Error fetching TV shows:", error);
-        setLoading(false);
+        onDataLoaded(); 
       });
   };
 
@@ -30,13 +29,9 @@ const TopRated = () => {
 
   return (
     <Box p="3">
-      {loading ? (
-        <Center>
-          <Spinner size="xl" />
-        </Center>
-      ) : (
+    
+        <Heading px="2px" mt="20" as="h4" fontWeight="500" textAlign="start">Top Rated </Heading>
         <List tvList={tvList} />
-      )}
     </Box>
   );
 };

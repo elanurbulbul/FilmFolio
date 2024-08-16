@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../AllCards/TvShowCards/list";
-import { Box, Spinner, Center } from "@chakra-ui/react";
+import { Box, Heading} from "@chakra-ui/react";
 
-const PopulerTvShow = () => {
+const PopulerTvShow = ({ onDataLoaded }) => {
   const [tvList, setTvList] = useState([]);
-  const [loading, setLoading] = useState(true);
-
 
   const getTv = () => {
     fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/tv/popular?api_key=${import.meta.env.VITE_API_KEY}`
+      `${import.meta.env.VITE_API_BASE_URL}/tv/popular?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
     )
       .then((res) => res.json())
       .then((json) => {
         setTvList(json.results);
-        setLoading(false);
+        onDataLoaded();
       })
       .catch((error) => {
         console.error("Error fetching TV shows:", error);
-        setLoading(false);
+        onDataLoaded();
       });
   };
 
@@ -26,18 +26,14 @@ const PopulerTvShow = () => {
     getTv();
   }, []);
 
-  
   return (
     <Box p="3">
-      {loading ? (
-        <Center>
-          <Spinner size="xl" />
-        </Center>
-      ) : (
-        <List tvList={tvList} />
-      )}
+      <Heading px="2px" mt="20" as="h4" fontWeight="500" textAlign="start">
+        Popular 
+      </Heading>
+      <List tvList={tvList} />
     </Box>
-    );
+  );
 };
 
 export default PopulerTvShow;
