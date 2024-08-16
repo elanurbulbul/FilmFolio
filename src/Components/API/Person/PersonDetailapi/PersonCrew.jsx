@@ -41,7 +41,7 @@ const PersonCrew = ({ credits }) => {
           key={crew.id || index}
           display="flex"
           align="center"
-          justifyContent="center"
+          justifyContent="space-between"
           flexDirection="column"
           textAlign="center"
           borderWidth={1}

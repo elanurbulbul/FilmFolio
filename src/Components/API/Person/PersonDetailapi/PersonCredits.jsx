@@ -26,7 +26,7 @@ const PersonCredits = ({ credits }) => {
   const handleShowMoreClick = () => {
     setVisibleCount((prevCount) => {
       const newCount = prevCount + 6;
-      return Math.min(newCount, credits.cast.length); // Ensure not exceeding total length
+      return Math.min(newCount, credits.cast.length); 
     });
   };
 
@@ -44,7 +44,7 @@ const PersonCredits = ({ credits }) => {
             key={cast.id || index}
             display="flex"
             flexDirection="column"
-            justifyContent="center"
+            justifyContent="space-between"
             alignContent="center"
             textAlign="center"
             borderWidth={1}

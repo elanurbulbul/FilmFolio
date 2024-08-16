@@ -58,7 +58,7 @@ const PersonDetailapi = () => {
           <Button onClick={handleToggle}>
             {showImages
               ? "Hide Photo Gallery"
-              : `Click here to see ${personDetail.name}'s Photo Gallery`}
+              : `Click here to see his/her photo gallery`}
           </Button>
         </Box>
       )}
