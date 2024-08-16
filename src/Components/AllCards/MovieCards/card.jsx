@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, Image, Text, Flex, Tooltip } from "@chakra-ui/react";
+import { Box, Image, Text, Flex, Tooltip, Icon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { format } from 'date-fns';
 import { StarIcon } from "@chakra-ui/icons";
+import { FaPhotoFilm } from "react-icons/fa6";
+
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
@@ -30,48 +32,67 @@ const MovieCard = ({ movie }) => {
   }, [movie.title]);
 
   return (
-    <Box 
+    <Box
       display="flex"
       flexDirection="column"
-      justifyContent="space-between" 
-      borderWidth="1px" 
-      borderRadius="lg" 
-      overflow="hidden" 
+      justifyContent="space-between"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
       boxShadow="md"
       onClick={handleDetailClick}
       cursor="pointer"
       transition="transform 0.2s"
-     
+
     >
-      <Image
-        
-        width="100%"
-        aspectRatio={2 / 3}
-        height="auto"
-        borderTopRadius="8px"
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-      />
-      
-      <Box 
+      {movie.poster_path ? (
+        <Image
+          objectFit="cover"
+          width="100%"
+          height="auto"
+          mb={2}
+          alt={movie.title}
+          borderColor="gray.200"
+          aspectRatio={2 / 3}
+          borderTopRadius="8px"
+          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+        />
+      ) : (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          height="auto"
+          aspectRatio={2 / 3}
+          backgroundColor="gray.200"
+          borderTopRadius="8px"
+          mb={2}
+        >
+          <Icon as={FaPhotoFilm} boxSize="50px" color="gray.500" />
+          </Box>
+      )}
+
+
+      <Box
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
         p="4"
       >
-        <Tooltip 
-          label={movie.title} 
+        <Tooltip
+          label={movie.title}
           aria-label="Title Tooltip"
           isOpen={isTooltipVisible && isHovered}
           hasArrow
         >
-          <Text  
+          <Text
             ref={textRef}
-            fontWeight="bold" 
-            fontSize="lg" 
-            mb={4} 
-            overflow="hidden" 
-            textOverflow="ellipsis" 
+            fontWeight="bold"
+            fontSize="lg"
+            mb={4}
+            overflow="hidden"
+            textOverflow="ellipsis"
             whiteSpace="nowrap"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

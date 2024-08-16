@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, Image, Text, Tooltip } from "@chakra-ui/react";
+import { Box, Image, Text, Tooltip, Icon } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { FaUserAlt } from 'react-icons/fa'; // Import a user icon from react-icons
+
 
 const PersonCard = ({ person }) => {
   const navigate = useNavigate();
@@ -33,14 +35,32 @@ const PersonCard = ({ person }) => {
       cursor="pointer"
       transition="transform 0.2s"
     >
-      <Image
-        width="100%"
-        aspectRatio={2 / 3}
-        height="auto"
-        borderTopRadius="8px"
-        src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
-        alt={person.name}
-      />
+      {person.profile_path ? (
+        <Image
+          objectFit="cover"
+          width="100%"
+          height="auto"
+          mb={2}
+          borderColor="gray.200"
+          aspectRatio={2 / 3}
+          borderTopRadius="8px"
+          src={`https://image.tmdb.org/t/p/w200${person.profile_path}`}
+        />
+      ) : (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          height="auto"
+          aspectRatio={2 / 3}
+          backgroundColor="gray.200"
+          borderTopRadius="8px"
+          mb={2}
+        >
+          <Icon as={FaUserAlt} boxSize="50px" color="gray.500" />
+        </Box>
+      )}
 
       <Box
         display="flex"
