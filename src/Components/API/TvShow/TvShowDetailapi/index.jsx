@@ -76,7 +76,7 @@ const TvShowDetailapi = () => {
         />
       </Stack>
 
-      <Stack pb={2}>
+      <Stack pb={2} mt="50px">
         {hasCast && <CastList cast={tvShowDetail.credits.cast} />}
         {hasVideos && <VideoList videos={tvShowDetail.videos.results} />}
         {hasCompanies && <Company companies={tvShowDetail.production_companies} />}

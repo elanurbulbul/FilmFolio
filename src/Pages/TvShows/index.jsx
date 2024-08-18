@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Heading, Container, Spinner, Center } from "@chakra-ui/react";
+import { Box, Container, Spinner, Center } from "@chakra-ui/react";
 import PopulerTvShow from "../../Components/API/TvShow/PopulerTv";
 import AiringTodayTv from "../../Components/API/TvShow/AiringTodayTv";
 import OnTheAirTv from "../../Components/API/TvShow/OnTheAirTv";
 import TopRatedTv from "../../Components/API/TvShow/TopRatedTv";
+import Header from "./header";
 
 const TvShows = () => {
   const [loading, setLoading] = useState(true);
@@ -35,12 +36,13 @@ const TvShows = () => {
         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="gray.400" size="xl" />
       </Center>
       ) : (
-        <>
+        <Box my={10}>
+          <Header/>
           <PopulerTvShow onDataLoaded={() => handleDataLoaded("popular")} />
           <AiringTodayTv onDataLoaded={() => handleDataLoaded("airingToday")} />
           <OnTheAirTv onDataLoaded={() => handleDataLoaded("onTheAir")} />
           <TopRatedTv onDataLoaded={() => handleDataLoaded("topRated")} />
-        </>
+        </Box>
       )}
     </Container>
   );
