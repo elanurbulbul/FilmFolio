@@ -23,8 +23,8 @@ const PopulerMovie = ({ onDataLoaded }) => {
   }, []);
 
   return (
-    <Box p="3">
-      <Heading px="2px" mt="20" as="h4" fontWeight="500" textAlign="start">Populer </Heading>
+    <Box px="3">
+      <Heading px="2px" mt={{base:"15px", md:"40px"}} as="h4" fontWeight="500" textAlign="start">Populer </Heading>
       <List movieList={movieList} />
     </Box>
   );

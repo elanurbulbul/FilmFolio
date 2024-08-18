@@ -94,7 +94,7 @@ const MovieDetailapi = () => {
         <MovieHeader overview={movieDetail.overview} />
       </Stack>
 
-      <Stack mt={16} pb={2}>
+      <Stack mt="50px" pb={2}>
         {hasCast && <CastList cast={movieDetail.credits.cast} />}
         {hasVideos && <VideoList videos={movieDetail.videos.results} />}
         {hasCompanies && <Company companies={movieDetail.production_companies} />}

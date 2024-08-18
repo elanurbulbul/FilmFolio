@@ -28,7 +28,7 @@ const TopRatedMovie = ({onDataLoaded}) => {
   return (
     <Box p="3">
    
-      <Heading px="2px" mt="20" as="h4" fontWeight="500" textAlign="start">Top Rated</Heading>
+      <Heading px="2px" mt={{base:"15px", md:"40px"}} as="h4" fontWeight="500" textAlign="start">Top Rated</Heading>
       <List movieList={movieList} />
    
   </Box>

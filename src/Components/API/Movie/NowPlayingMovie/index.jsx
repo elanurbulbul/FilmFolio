@@ -28,7 +28,7 @@ const NowPlayingMovie = ({onDataLoaded}) => {
     <Box p="3">
      
       
-        <Heading px="2px" mt={{base:"12", md:"20"}} as="h4" fontWeight="500" textAlign="start">Now Playing </Heading>
+        <Heading px="2px" mt={{base:"15px", md:"40px"}} as="h4" fontWeight="500" textAlign="start">Now Playing </Heading>
         <List movieList={movieList} />
 
     </Box>
