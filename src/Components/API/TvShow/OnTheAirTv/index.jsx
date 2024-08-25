@@ -28,7 +28,7 @@ const OnTheAir = ({ onDataLoaded }) => {
   }, []);
 
   return (
-    <Box p="3">
+    <Box px="3">
       <Heading px="2px" mt={{base:"15px", md:"40px"}} as="h4" fontWeight="500" textAlign="start">
         On The Air 
       </Heading>
