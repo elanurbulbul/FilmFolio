@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Spinner, Stack, Center, Text, Flex } from "@chakra-ui/react";
+import { Box, Spinner, Stack, Center, Text, Flex, Button } from "@chakra-ui/react";
 import { TVShowName, TVShowDetails } from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
 import CastList from "../../DetailPageElements/CastList";
@@ -35,6 +35,17 @@ const TvShowDetailapi = () => {
       </Center>
     );
   }
+
+  const addToWatchlist = () => {
+    const storedWatchlist = localStorage.getItem("watchlist");
+    const watchlist = storedWatchlist ? JSON.parse(storedWatchlist) : [];
+
+    const updatedWatchlist = [...watchlist, tvShowDetail];
+
+    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+
+    alert(`${tvShowDetail.name} has been added to your watchlist!`);
+  };
 
   const officialTrailer = tvShowDetail.videos.results.find(
     (video) => video.type === "Trailer" && video.official
@@ -75,7 +86,9 @@ const TvShowDetailapi = () => {
           episodes={tvShowDetail.number_of_episodes}
         />
       </Stack>
-
+      <Box mt={1} textAlign="start">
+        <Button onClick={addToWatchlist}>Add Watchlist</Button>
+      </Box>
       <Stack pb={2} mt="50px">
         {hasCast && <CastList cast={tvShowDetail.credits.cast} />}
         {hasVideos && <VideoList videos={tvShowDetail.videos.results} />}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
-import { Spinner, Stack, Text, Center, Flex } from "@chakra-ui/react";
+import { Spinner, Stack, Text, Center, Flex, Box, Button } from "@chakra-ui/react";
 import MovieHeader from "./MovieHeader";
 import MoviePoster from "./MoviePoster";
 import GenreList from "../../DetailPageElements/GenreList";
@@ -41,6 +41,17 @@ const MovieDetailapi = () => {
       </Center>
     );
   }
+
+  const addToWatchlist = () => {
+    const storedWatchlist = localStorage.getItem("watchlist");
+    const watchlist = storedWatchlist ? JSON.parse(storedWatchlist) : [];
+
+    const updatedWatchlist = [...watchlist, movieDetail];
+
+    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+
+    alert(`${movieDetail.title} has been added to your watchlist!`);
+  };
 
   const officialTrailer = movieDetail.videos.results.find(
     (video) => video.type === "Trailer" && video.official
@@ -93,6 +104,9 @@ const MovieDetailapi = () => {
 
         <MovieHeader overview={movieDetail.overview} />
       </Stack>
+      <Box mt={1} textAlign="start">
+        <Button onClick={addToWatchlist}>Add Watchlist</Button>
+      </Box>
 
       <Stack mt="50px" pb={2}>
         {hasCast && <CastList cast={movieDetail.credits.cast} />}
