@@ -9,8 +9,8 @@ import MoviesDetail from "../../Pages/MoviesDetail";
 import TvShowDetail from "../../Pages/TvShowsDetail";
 import PersonDetail from "../../Pages/PersonDetail"
 import SearchPage from "../../Pages/SearchPage";
-import SignIn from "../../Components/Authentication/SignIn"
-import SignUp from "../Authentication/SignUp";
+import SignIn from "../../Pages/Authentication/SignIn"
+import SignUp from "../../Pages/Authentication/SignUp";
 
 const RoutePage = () => {
     return (
