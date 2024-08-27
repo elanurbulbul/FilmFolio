@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Spinner, Stack, Center, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Spinner, Stack, Center, Text,Link, Flex, Button } from "@chakra-ui/react";
 import { TVShowName, TVShowDetails } from "./TvShowHeader";
 import TvShowPoster from "./TvShowPoster";
 import CastList from "../../DetailPageElements/CastList";
@@ -10,10 +10,15 @@ import Company from "../../DetailPageElements/Companies";
 import RecommendationList from "../../DetailPageElements/RecommendationList";
 import VideoList from "../../DetailPageElements/Videos";
 import { StarIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
+
 
 const TvShowDetailapi = () => {
+  const navigate = useNavigate();
   const { tvId } = useParams();
   const [tvShowDetail, setTvShowDetail] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
+
 
   const getTvShowDetail = () => {
     const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/tv/${tvId}?append_to_response=videos,genres,images,people,credits,recommendations&language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
@@ -37,6 +42,13 @@ const TvShowDetailapi = () => {
   }
 
   const addToWatchlist = () => {
+    const user = localStorage.getItem("user");
+
+    if (!user) {
+      setShowAlert(true); 
+      return;
+    }
+
     const storedWatchlist = localStorage.getItem("watchlist");
     const watchlist = storedWatchlist ? JSON.parse(storedWatchlist) : [];
 
@@ -89,6 +101,14 @@ const TvShowDetailapi = () => {
       <Box mt={1} textAlign="start">
         <Button onClick={addToWatchlist}>Add Watchlist</Button>
       </Box>
+      {showAlert && (
+        <Box mt={4} p={4} bg={"gray.600"} borderRadius="md">
+          <Text>You need to sign in to add items to your watchlist.</Text>
+          <Link color="blue.500" onClick={() => navigate("/signIn")}>
+            Click here to sign in.
+          </Link>
+        </Box>
+      )}
       <Stack pb={2} mt="50px">
         {hasCast && <CastList cast={tvShowDetail.credits.cast} />}
         {hasVideos && <VideoList videos={tvShowDetail.videos.results} />}
