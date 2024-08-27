@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Components/Context/AuthContext";
-import { Box, Input, Button, Heading, Text, Link } from "@chakra-ui/react";
+import { useAuth } from "../Context/AuthContext";
+import { Box, Input, Button, Heading, Text, Link, Center } from "@chakra-ui/react";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -11,10 +11,8 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    // LocalStorage'dan kullanıcı bilgilerini al
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    // Kullanıcı var mı ve e-posta eşleşiyor mu?
     if (storedUser && storedUser.email === email) {
       if (email && password) {
         const userData = { email };
@@ -22,20 +20,21 @@ export default function SignIn() {
         navigate("/homepage");
       }
     } else {
-      // Kullanıcı yoksa veya e-posta eşleşmiyorsa, uyarı mesajı göster
-      setError("Email bulunamadı. Lütfen önce kaydolun.");
+      setError("The email was not found. Please register first.");
     }
   };
 
   return (
-    <Box>
-      <Heading>Sign In</Heading>
+    <Center height="100vh">
+       <Box>
+      <Heading mb={2}>Sign In</Heading>
       <Input
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <Input
+        my={2}
         placeholder="Password"
         type="password"
         value={password}
@@ -52,5 +51,7 @@ export default function SignIn() {
         </Text>
       )}
     </Box>
+    </Center>
+   
   );
 }

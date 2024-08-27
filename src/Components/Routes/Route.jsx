@@ -9,8 +9,8 @@ import MoviesDetail from "../../Pages/MoviesDetail";
 import TvShowDetail from "../../Pages/TvShowsDetail";
 import PersonDetail from "../../Pages/PersonDetail"
 import SearchPage from "../../Pages/SearchPage";
-import SignIn from "../../Pages/Authentication/SignIn"
-import SignUp from "../../Pages/Authentication/SignUp";
+import SignInPage from "../../Pages/AuthPages/SignIn";
+import SignUpPage from "../../Pages/AuthPages/SignUp";
 
 const RoutePage = () => {
     return (
@@ -25,8 +25,8 @@ const RoutePage = () => {
         <Route path="/tvshows/:tvId" element={<TvShowDetail/>} />
         <Route path="/people/:personId" element={<PersonDetail/>} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/signIn" element={<SignIn/>}/>
-        <Route path="/signUp" element={<SignUp/>}/>
+        <Route path="/signIn" element={<SignInPage/>}/>
+        <Route path="/signUp" element={<SignUpPage/>}/>
 
       </Routes>
     );
