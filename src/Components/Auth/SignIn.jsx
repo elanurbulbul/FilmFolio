@@ -13,45 +13,41 @@ export default function SignIn() {
   const handleSignIn = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedUser && storedUser.email === email) {
-      if (email && password) {
-        const userData = { email };
-        signIn(userData);
-        navigate("/homepage");
-      }
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      signIn(storedUser);
+      navigate("/homepage");
     } else {
-      setError("The email was not found. Please register first.");
+      setError("Email or password is incorrect. Please try again.");
     }
   };
 
   return (
     <Center height="100vh">
-       <Box>
-      <Heading mb={2}>Sign In</Heading>
-      <Input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-        my={2}
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button onClick={handleSignIn}>Sign In</Button>
+      <Box>
+        <Heading mb={2}>Sign In</Heading>
+        <Input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          my={2}
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button onClick={handleSignIn}>Sign In</Button>
 
-      {error && (
-        <Text color="red" mt={4}>
-          {error}{" "}
-          <Link color="teal.500" onClick={() => navigate("/signup")}>
-            Sign Up
-          </Link>
-        </Text>
-      )}
-    </Box>
+        {error && (
+          <Text color="red" mt={4}>
+            {error}{" "}
+            <Link color="teal.500" onClick={() => navigate("/signup")}>
+              Sign Up
+            </Link>
+          </Text>
+        )}
+      </Box>
     </Center>
-   
   );
 }

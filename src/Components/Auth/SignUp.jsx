@@ -9,7 +9,7 @@ export default function SignUp() {
 
   const handleSignUp = () => {
     if (email && password) {
-      const userData = { email };
+      const userData = { email, password };
 
       localStorage.setItem("user", JSON.stringify(userData));
 
@@ -19,23 +19,22 @@ export default function SignUp() {
 
   return (
     <Center height="100vh">
-       <Box>
-      <Heading mb={2}>Sign Up</Heading>
-      <Input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-       my={2}
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button onClick={handleSignUp}>Sign Up</Button>
-    </Box>
+      <Box>
+        <Heading mb={2}>Sign Up</Heading>
+        <Input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          my={2}
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button onClick={handleSignUp}>Sign Up</Button>
+      </Box>
     </Center>
-   
   );
 }

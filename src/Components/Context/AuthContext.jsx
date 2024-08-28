@@ -7,7 +7,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-    if (storedUser) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (storedUser && isLoggedIn === "true") {
       setUser(JSON.parse(storedUser));
     }
   }, []);
@@ -15,11 +17,12 @@ export const AuthProvider = ({ children }) => {
   const signIn = (userData) => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("isLoggedIn", "true");
   };
 
   const signOut = () => {
     setUser(null);
-    localStorage.removeItem("user");
+    localStorage.setItem("isLoggedIn", "false");
   };
 
   return (
