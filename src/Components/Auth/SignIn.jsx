@@ -11,7 +11,7 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = JSON.parse(localStorage.getItem(`user_${email}`));
 
     if (storedUser && storedUser.email === email && storedUser.password === password) {
       signIn(storedUser);

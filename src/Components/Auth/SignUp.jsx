@@ -11,7 +11,7 @@ export default function SignUp() {
     if (email && password) {
       const userData = { email, password };
 
-      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem(`user_${email}`, JSON.stringify(userData));
 
       navigate("/signin");
     }
