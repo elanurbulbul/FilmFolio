@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
-import { FaUserAlt } from 'react-icons/fa'; // Import a user icon from react-icons
+import { FaUserAlt } from 'react-icons/fa';
 
 const CastList = ({ cast }) => {
   const navigate = useNavigate();
@@ -37,11 +37,12 @@ const CastList = ({ cast }) => {
             <Card
               display="flex"
               flexDirection="column"
-              justifyContent="space-between"
+              justifyContent={castMember.character ? "space-between" : "center"}  // Eğer character varsa space-between, yoksa center
               borderRadius="8px"
               onClick={() => handleNavigate(castMember.id)}
               cursor="pointer"
               transition="transform 0.2s"
+              textAlign="center" // İçeriği ortalamak için
             >
               {castMember.profile_path ? (
                 <Image
@@ -75,21 +76,22 @@ const CastList = ({ cast }) => {
                 noOfLines={1}
                 overflow="hidden"
                 textOverflow="ellipsis"
-                mb={{bs:"1",md:"2"}}
-
+                mb={castMember.character ? {bs:"1",md:"2"} : 0}  // Eğer character yoksa margin-bottom uygulama
               >
                 {castMember.name}
               </Text>
-              <Text
-                fontSize="sm"
-                noOfLines={1}
-                overflow="hidden"
-                textOverflow="ellipsis"
-                color="gray.600"
-                mb={2}
-              >
-                {castMember.character}
-              </Text>
+              {castMember.character && (
+                <Text
+                  fontSize="sm"
+                  noOfLines={1}
+                  overflow="hidden"
+                  textOverflow="ellipsis"
+                  color="gray.600"
+                  mb={2}
+                >
+                  {castMember.character}
+                </Text>
+              )}
             </Card>
           </SwiperSlide>
         ))}

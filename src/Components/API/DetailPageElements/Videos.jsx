@@ -90,7 +90,7 @@ const VideoList = ({ videos }) => {
                       borderRadius: '8px',
                       width: '100%',
                       height: '100%',
-                      pointerEvents: 'none', // Video iframe'ine tıklamayı devre dışı bırak
+                      pointerEvents: 'none', 
                     }}
                   />
                 </AspectRatio>

@@ -53,7 +53,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
             <Icon as={MdPlayArrow} />
           </Box>
 
-          <Modal isOpen={isOpen} onClose={onClose} size="xl">
+          <Modal isCentered isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>{displayName} - Trailer</ModalHeader>
