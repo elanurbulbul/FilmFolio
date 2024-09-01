@@ -10,7 +10,7 @@ const AddToWatchlistButton = ({ item, itemType }) => {
 
   useEffect(() => {
     if (user) {
-      setShowAlert(false); // Eğer kullanıcı mevcutsa, uyarı mesajını gizle
+      setShowAlert(false); 
     }
   }, [user]);
 
@@ -20,14 +20,19 @@ const AddToWatchlistButton = ({ item, itemType }) => {
       return;
     }
 
+    const emailKey = user.email.trim().toLowerCase();
     let watchlist = [];
 
     try {
-      const storedWatchlist = localStorage.getItem(`watchlist_${user.email}`);
+      const storedWatchlist = localStorage.getItem(`watchlist_${emailKey}`);
       watchlist = storedWatchlist ? JSON.parse(storedWatchlist) : [];
       
-      // console.log ile hataları yakalayın
-      console.log('Current Watchlist:', watchlist);
+      if (Array.isArray(watchlist)) {
+        console.log('Current Watchlist:', watchlist);
+      } else {
+        console.warn('Watchlist is not an array, initializing an empty array.');
+        watchlist = [];
+      }
       
     } catch (error) {
       console.error('Error parsing watchlist:', error);
@@ -36,7 +41,7 @@ const AddToWatchlistButton = ({ item, itemType }) => {
 
     if (!watchlist.some((watchlistItem) => watchlistItem.id === item.id)) {
       const updatedWatchlist = [...watchlist, item];
-      localStorage.setItem(`watchlist_${user.email}`, JSON.stringify(updatedWatchlist));
+      localStorage.setItem(`watchlist_${emailKey}`, JSON.stringify(updatedWatchlist));
       alert(`${item.title || item.name} has been added to your watchlist!`);
     } else {
       alert(`${item.title || item.name} is already in your watchlist!`);
