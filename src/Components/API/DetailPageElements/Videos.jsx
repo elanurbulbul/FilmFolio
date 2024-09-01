@@ -1,10 +1,32 @@
-import React from 'react';
-import { Box, Text, AspectRatio, Card } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import {
+  Box,
+  Text,
+  AspectRatio,
+  Card,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation, Pagination } from 'swiper/modules';
 
 const VideoList = ({ videos }) => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+    onOpen();
+  };
+
   if (!videos || videos.length === 0) {
     return (
       <Text textAlign="start" fontSize="18px">
@@ -43,6 +65,8 @@ const VideoList = ({ videos }) => {
               textAlign="center"
               backgroundPosition="center"
               backgroundSize="cover"
+              onClick={() => handleVideoClick(video)}
+              cursor="pointer"
             >
               <Text
                 fontSize="18px"
@@ -66,6 +90,7 @@ const VideoList = ({ videos }) => {
                       borderRadius: '8px',
                       width: '100%',
                       height: '100%',
+                      pointerEvents: 'none', // Video iframe'ine tıklamayı devre dışı bırak
                     }}
                   />
                 </AspectRatio>
@@ -74,6 +99,35 @@ const VideoList = ({ videos }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{selectedVideo?.name}</ModalHeader>
+          <ModalBody>
+            {selectedVideo && selectedVideo.site === 'YouTube' && (
+              <AspectRatio ratio={16 / 9} width="100%">
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedVideo.key}`}
+                  title={selectedVideo.name}
+                  allowFullScreen
+                  style={{
+                    border: 0,
+                    borderRadius: '8px',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              </AspectRatio>
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };
