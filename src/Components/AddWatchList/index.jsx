@@ -17,7 +17,7 @@ import TvCard from "../AllCards/TvShowCards/card";
 import { useAuth } from "../Context/AuthContext";
 
 const AddWatchList = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Başlangıçta loading true olarak ayarlandı
   const [movieWatchlist, setMovieWatchlist] = useState([]);
   const [tvShowWatchlist, setTvShowWatchlist] = useState([]);
   const { user } = useAuth();
@@ -25,16 +25,31 @@ const AddWatchList = () => {
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    const storedWatchlist = localStorage.getItem("watchlist");
-    if (storedWatchlist) {
-      const parsedWatchlist = JSON.parse(storedWatchlist);
-      const movies = parsedWatchlist.filter((item) => item.title);
-      const tvShows = parsedWatchlist.filter((item) => item.name);
-      setMovieWatchlist(movies);
-      setTvShowWatchlist(tvShows);
+    if (user) {
+      try {
+        const storedWatchlist = localStorage.getItem(`watchlist_${user.email}`);
+        if (storedWatchlist) {
+          const parsedWatchlist = JSON.parse(storedWatchlist);
+          
+          // Verinin array olup olmadığını kontrol edin
+          if (Array.isArray(parsedWatchlist)) {
+            const movies = parsedWatchlist.filter((item) => item.title);
+            const tvShows = parsedWatchlist.filter((item) => item.name);
+            setMovieWatchlist(movies);
+            setTvShowWatchlist(tvShows);
+          } else {
+            console.error("Watchlist data is not an array:", parsedWatchlist);
+          }
+        }
+      } catch (error) {
+        console.error("Error parsing watchlist:", error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false); // Eğer user yoksa bile loading'i kapat
     }
-    setLoading(false);
-  }, [user, toast]);
+  }, [user]); // `user`'ı bağımlılıklara ekledik
 
   const removeFromWatchlist = (id, type) => {
     let updatedMovieWatchlist = movieWatchlist;
@@ -52,7 +67,10 @@ const AddWatchList = () => {
       ...updatedMovieWatchlist,
       ...updatedTvShowWatchlist,
     ];
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+
+    if (user) {
+      localStorage.setItem(`watchlist_${user.email}`, JSON.stringify(updatedWatchlist));
+    }
   };
 
   const isEmpty = movieWatchlist.length === 0 && tvShowWatchlist.length === 0;

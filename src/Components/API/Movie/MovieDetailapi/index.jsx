@@ -11,7 +11,7 @@ import Company from "../../DetailPageElements/Companies";
 import VideoList from "../../DetailPageElements/Videos";
 import RecommendationList from "../../DetailPageElements/RecommendationList";
 import { useNavigate } from "react-router-dom";
-
+import AddToWatchlistButton from "../../DetailPageElements/AddWatchListButton";
 
 const MovieDetailapi = () => {
   const navigate = useNavigate();
@@ -47,23 +47,6 @@ const MovieDetailapi = () => {
     );
   }
 
-  const addToWatchlist = () => {
-    const user = localStorage.getItem("user");
-
-    if (!user) {
-      setShowAlert(true); 
-      return;
-    }
-
-    const storedWatchlist = localStorage.getItem("watchlist");
-    const watchlist = storedWatchlist ? JSON.parse(storedWatchlist) : [];
-
-    const updatedWatchlist = [...watchlist, movieDetail];
-
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
-
-    alert(`${movieDetail.title} has been added to your watchlist!`);
-  };
   const officialTrailer = movieDetail.videos.results.find(
     (video) => video.type === "Trailer" && video.official
   );
@@ -115,18 +98,10 @@ const MovieDetailapi = () => {
 
         <MovieHeader overview={movieDetail.overview} />
       </Stack>
-      <Box mt={1} textAlign="start">
-        <Button onClick={addToWatchlist}>Add Watchlist</Button>
-      </Box>
+     
 
-      {showAlert && (
-        <Box mt={4} p={4} bg={"gray.600"} borderRadius="md">
-          <Text>You need to sign in to add items to your watchlist.</Text>
-          <Link color="blue.500" onClick={() => navigate("/signIn")}>
-            Click here to sign in.
-          </Link>
-        </Box>
-      )}
+      <AddToWatchlistButton item={movieDetail} itemType="movie" />
+
 
       <Stack mt="50px" pb={2}>
         {hasCast && <CastList cast={movieDetail.credits.cast} />}

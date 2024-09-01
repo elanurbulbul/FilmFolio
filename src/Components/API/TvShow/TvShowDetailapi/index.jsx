@@ -11,6 +11,7 @@ import RecommendationList from "../../DetailPageElements/RecommendationList";
 import VideoList from "../../DetailPageElements/Videos";
 import { StarIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
+import AddToWatchlistButton from "../../DetailPageElements/AddWatchListButton";
 
 
 const TvShowDetailapi = () => {
@@ -41,23 +42,8 @@ const TvShowDetailapi = () => {
     );
   }
 
-  const addToWatchlist = () => {
-    const user = localStorage.getItem("user");
-
-    if (!user) {
-      setShowAlert(true); 
-      return;
-    }
-
-    const storedWatchlist = localStorage.getItem("watchlist");
-    const watchlist = storedWatchlist ? JSON.parse(storedWatchlist) : [];
-
-    const updatedWatchlist = [...watchlist, tvShowDetail];
-
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
-
-    alert(`${tvShowDetail.name} has been added to your watchlist!`);
-  };
+  
+  
 
   const officialTrailer = tvShowDetail.videos.results.find(
     (video) => video.type === "Trailer" && video.official
@@ -98,17 +84,9 @@ const TvShowDetailapi = () => {
           episodes={tvShowDetail.number_of_episodes}
         />
       </Stack>
-      <Box mt={1} textAlign="start">
-        <Button onClick={addToWatchlist}>Add Watchlist</Button>
-      </Box>
-      {showAlert && (
-        <Box mt={4} p={4} bg={"gray.600"} borderRadius="md">
-          <Text>You need to sign in to add items to your watchlist.</Text>
-          <Link color="blue.500" onClick={() => navigate("/signIn")}>
-            Click here to sign in.
-          </Link>
-        </Box>
-      )}
+      
+      <AddToWatchlistButton item={tvShowDetail} itemType="tv" />
+
       <Stack pb={2} mt="50px">
         {hasCast && <CastList cast={tvShowDetail.credits.cast} />}
         {hasVideos && <VideoList videos={tvShowDetail.videos.results} />}
