@@ -4,9 +4,11 @@ import { Box, Icon, Text, Flex } from '@chakra-ui/react';
 const GenreList = ({ genres, release_date, first_air_date }) => (
   <Box>
     <Flex wrap="wrap" gap={2} alignItems="center">
-      <Text fontWeight="500" fontSize="18px" mr={1} fontFamily="inherit">
-        {first_air_date?.substring(0, 4) || release_date?.substring(0, 4)}
-      </Text>
+      {(first_air_date || release_date) && (
+        <Text fontWeight="500" fontSize="18px" mr={1} fontFamily="inherit">
+          {first_air_date?.substring(0, 4) || release_date?.substring(0, 4)}
+        </Text>
+      )}
       {genres.map((genre) => (
         <Flex key={genre.id} alignItems="center">
           <Icon mr="1" alignSelf="center" viewBox='0 0 200 200' boxSize="10px">

@@ -17,7 +17,7 @@ const MovieCard = ({ movie }) => {
     try {
       return format(new Date(movie.release_date), 'yyyy');
     } catch {
-      return 'Unknown Year';
+      return '-';
     }
   })();
 
