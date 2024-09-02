@@ -17,7 +17,7 @@ import TvCard from "../AllCards/TvShowCards/card";
 import { useAuth } from "../Context/AuthContext";
 
 const AddWatchList = () => {
-  const [loading, setLoading] = useState(true); // Başlangıçta loading true olarak ayarlandı
+  const [loading, setLoading] = useState(true); 
   const [movieWatchlist, setMovieWatchlist] = useState([]);
   const [tvShowWatchlist, setTvShowWatchlist] = useState([]);
   const { user } = useAuth();
@@ -31,7 +31,6 @@ const AddWatchList = () => {
         if (storedWatchlist) {
           const parsedWatchlist = JSON.parse(storedWatchlist);
           
-          // Verinin array olup olmadığını kontrol edin
           if (Array.isArray(parsedWatchlist)) {
             const movies = parsedWatchlist.filter((item) => item.title);
             const tvShows = parsedWatchlist.filter((item) => item.name);
@@ -47,9 +46,9 @@ const AddWatchList = () => {
         setLoading(false);
       }
     } else {
-      setLoading(false); // Eğer user yoksa bile loading'i kapat
+      setLoading(false); 
     }
-  }, [user]); // `user`'ı bağımlılıklara ekledik
+  }, [user]); 
 
   const removeFromWatchlist = (id, type) => {
     let updatedMovieWatchlist = movieWatchlist;
@@ -147,7 +146,7 @@ const AddWatchList = () => {
             <Center height="100vh">
             <Box textAlign="center">
               <Text mb={4}>You need to sign in to access your watchlist.</Text>
-              <Link color="teal.500" onClick={() => navigate("/signin")}>
+              <Link color="teal.500" onClick={() => navigate("/sign-in")}>
                 Click here to sign in
               </Link>
             </Box>

@@ -211,9 +211,9 @@ export default function Navbar() {
                 <Button
                   as={"a"}
                   fontSize={"sm"}
-                  fontWeight={400}
+                  fontWeight={600}
                   variant={"link"}
-                  href={"/signIn"}
+                  href={"/sign-in"}
                   display={{ base: "none", lg: "inline-flex" }}
                   _hover={{
                     textDecoration: "none",
@@ -223,12 +223,12 @@ export default function Navbar() {
                 </Button>
                 <Button
                   as={"a"}
-                  px={5} 
+                  px={5}
                   fontSize={"sm"}
                   fontWeight={600}
                   color={"white"}
                   bg={"pink.400"}
-                  href={"/signUp"}
+                  href={"/sign-up"}
                   _hover={{
                     bg: "pink.300",
                   }}
@@ -260,13 +260,20 @@ export default function Navbar() {
               </MenuButton>
               <MenuList>
                 {user ? (
-                  <MenuItem onClick={handleLogout}>Sign Out</MenuItem>
+                  <MenuItem
+                    fontSize={"sm"}
+                    fontWeight={600}
+                    color={"white"}
+                    onClick={handleLogout}
+                  >
+                    Sign Out
+                  </MenuItem>
                 ) : (
                   <>
-                    <MenuItem as={RouterLink} to="/signin">
+                    <MenuItem as={RouterLink} to="/sign-in">
                       Sign In
                     </MenuItem>
-                    <MenuItem as={RouterLink} to="/signup">
+                    <MenuItem as={RouterLink} to="/sign-up">
                       Sign Up
                     </MenuItem>
                   </>

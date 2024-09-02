@@ -5,12 +5,7 @@ import SignUp from "../../Components/Auth/SignUp";
  const SignUpPage = () => {
   return (
     <Container
-      maxW={{
-        sm: "container.sm",
-        md: "container.md",
-        lg: "container.md",
-        xl: "container.lg",
-      }}
+      maxW="xl"
     >
         <SignUp/>
     </Container>

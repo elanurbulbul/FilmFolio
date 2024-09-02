@@ -26,8 +26,8 @@ const RoutePage = () => {
         <Route path="/tvshows/:tvId" element={<TvShowDetail/>} />
         <Route path="/people/:personId" element={<PersonDetail/>} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/signIn" element={<SignInPage/>}/>
-        <Route path="/signUp" element={<SignUpPage/>}/>
+        <Route path="/sign-in" element={<SignInPage/>}/>
+        <Route path="/sign-up" element={<SignUpPage/>}/>
         <Route path="/welcome" element={<Welcome/>}/>
       </Routes>
     );
