@@ -12,13 +12,27 @@ export default function SignIn() {
 
   const handleSignIn = () => {
     const storedUser = JSON.parse(localStorage.getItem(`user_${email}`));
-
-    if (storedUser && storedUser.email === email && storedUser.password === password) {
-      signIn(storedUser);
-      navigate("/homepage");
-    } else {
-      setError("Email or password is incorrect. Please try again.");
+    if (!email || !password) {
+      setError("Email and password are required.");
+      return;
     }
+    if (!validateEmail(email)) {
+      setError("Invalid email address.");
+      return;
+    }
+    if (storedUser) {
+      if (storedUser.password === password) {
+        signIn(storedUser);
+        navigate("/homepage");
+      } else {
+        setError("Email is registered, please try the password again.");
+      }
+    } else {
+      setError("Email is not registered, please sign up.");
+    }
+  };
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   return (
@@ -41,10 +55,14 @@ export default function SignIn() {
 
         {error && (
           <Text color="red" mt={4}>
-            {error}{" "}
-            <Link color="teal.500" onClick={() => navigate("/signup")}>
-              Sign Up
-            </Link>
+            {error}
+            {error === "Email is not registered, please sign up." && (
+              <Text>
+                <Link color="gray.600" onClick={() => navigate("/signup")}>
+                  Sign Up
+                </Link>
+              </Text>
+            )}
           </Text>
         )}
       </Box>
