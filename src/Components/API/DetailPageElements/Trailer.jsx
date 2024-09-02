@@ -53,7 +53,7 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
             <Icon as={MdPlayArrow} />
           </Box>
 
-          <Modal isCentered isOpen={isOpen} onClose={onClose} size="xl">
+          <Modal isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>{displayName} - Trailer</ModalHeader>
@@ -85,7 +85,6 @@ const Trailer = ({ trailer, name, title, posterPath }) => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          border="1px"
           borderColor="gray.100"
           aspectRatio="4/3"
           width="100%"

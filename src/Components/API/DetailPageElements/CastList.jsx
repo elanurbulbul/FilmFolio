@@ -37,12 +37,11 @@ const CastList = ({ cast }) => {
             <Card
               display="flex"
               flexDirection="column"
-              justifyContent={castMember.character ? "space-between" : "center"}  // Eğer character varsa space-between, yoksa center
+              justifyContent="space-between"
               borderRadius="8px"
               onClick={() => handleNavigate(castMember.id)}
               cursor="pointer"
               transition="transform 0.2s"
-              textAlign="center" // İçeriği ortalamak için
             >
               {castMember.profile_path ? (
                 <Image
@@ -76,22 +75,20 @@ const CastList = ({ cast }) => {
                 noOfLines={1}
                 overflow="hidden"
                 textOverflow="ellipsis"
-                mb={castMember.character ? {bs:"1",md:"2"} : 0}  // Eğer character yoksa margin-bottom uygulama
+                mb={{ bs: "1", md: "2" }}
               >
                 {castMember.name}
               </Text>
-              {castMember.character && (
-                <Text
-                  fontSize="sm"
-                  noOfLines={1}
-                  overflow="hidden"
-                  textOverflow="ellipsis"
-                  color="gray.600"
-                  mb={2}
-                >
-                  {castMember.character}
-                </Text>
-              )}
+              <Text
+                fontSize="sm"
+                noOfLines={1}
+                overflow="hidden"
+                textOverflow="ellipsis"
+                color="gray.600"
+                mb={2}
+              >
+                {castMember.character || '#unknown'}
+              </Text>
             </Card>
           </SwiperSlide>
         ))}
