@@ -11,6 +11,7 @@ import PersonDetail from "../../Pages/PersonDetail"
 import SearchPage from "../../Pages/SearchPage";
 import SignInPage from "../../Pages/AuthPages/SignIn";
 import SignUpPage from "../../Pages/AuthPages/SignUp";
+import Welcome from "../Auth/WelcomePage";
 
 const RoutePage = () => {
     return (
@@ -27,7 +28,7 @@ const RoutePage = () => {
         <Route path="/search" element={<SearchPage />} />
         <Route path="/signIn" element={<SignInPage/>}/>
         <Route path="/signUp" element={<SignUpPage/>}/>
-
+        <Route path="/welcome" element={<Welcome/>}/>
       </Routes>
     );
   };

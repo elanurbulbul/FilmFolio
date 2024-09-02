@@ -23,7 +23,7 @@ export default function SignIn() {
     if (storedUser) {
       if (storedUser.password === password) {
         signIn(storedUser);
-        navigate("/homepage");
+        navigate("/welcome"); 
       } else {
         setError("Email is registered, please try the password again.");
       }
@@ -31,6 +31,7 @@ export default function SignIn() {
       setError("Email is not registered, please sign up.");
     }
   };
+
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -65,6 +66,7 @@ export default function SignIn() {
             )}
           </Text>
         )}
+
       </Box>
     </Center>
   );
