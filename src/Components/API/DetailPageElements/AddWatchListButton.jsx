@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Text, Link } from '@chakra-ui/react';
+import { Box, Button, Text, Link, useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext'; 
 
@@ -7,6 +7,7 @@ const AddToWatchlistButton = ({ item, itemType }) => {
   const navigate = useNavigate();
   const { user } = useAuth(); 
   const [showAlert, setShowAlert] = useState(false);
+  const toast = useToast();
 
   useEffect(() => {
     if (user) {
@@ -42,9 +43,21 @@ const AddToWatchlistButton = ({ item, itemType }) => {
     if (!watchlist.some((watchlistItem) => watchlistItem.id === item.id)) {
       const updatedWatchlist = [...watchlist, item];
       localStorage.setItem(`watchlist_${emailKey}`, JSON.stringify(updatedWatchlist));
-      alert(`${item.title || item.name} has been added to your watchlist!`);
+      toast({
+        title: `${item.title || item.name} added to Watchlist`,
+        description: `${item.title || item.name} has been added to your watchlist!`,
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
     } else {
-      alert(`${item.title || item.name} is already in your watchlist!`);
+      toast({
+        title: `${item.title || item.name} already in Watchlist`,
+        description: `${item.title || item.name} is already in your watchlist!`,
+        status: 'info',
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
 
@@ -54,7 +67,7 @@ const AddToWatchlistButton = ({ item, itemType }) => {
       {showAlert && (
         <Box textAlign="center" mt={4} p={4} bg={"gray.600"} borderRadius="md">
           <Text>You need to sign in to add items to your watchlist.</Text>
-          <Link color="blue.500" onClick={() => navigate("/signIn")}>
+          <Link color="blue.500" onClick={() => navigate("/sign-in")}>
             Click here to sign in.
           </Link>
         </Box>
