@@ -3,7 +3,7 @@ import { Box, Image,Icon } from "@chakra-ui/react";
 import { FaPhotoFilm } from "react-icons/fa6";
 
 const MoviePoster = ({ posterPath, title }) => {
-  const placeholderThumbnail = 'https://via.placeholder.com/640x360.png?text=';
+  const placeholderThumbnail = 'https://placehold.co/640x360';
 
   return (
     <Box marginRight={2} alignSelf="center" >
