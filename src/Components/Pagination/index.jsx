@@ -2,16 +2,19 @@ import React from "react";
 import { Flex, IconButton } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import PageButton from "./PageButton";
+
 const Pagination = ({ page, totalPages, onPageChange, visiblePages }) => {
   const handleNextPage = () => {
     if (page < totalPages) {
       onPageChange(page + 1);
+      window.scrollTo(0, 0); // Scroll to top when page changes
     }
   };
 
   const handlePreviousPage = () => {
     if (page > 1) {
       onPageChange(page - 1);
+      window.scrollTo(0, 0); // Scroll to top when page changes
     }
   };
 
@@ -45,13 +48,16 @@ const Pagination = ({ page, totalPages, onPageChange, visiblePages }) => {
         key={index}
         num={num}
         isCurrent={page === num}
-        onClick={() => onPageChange(num)}
+        onClick={() => {
+          onPageChange(num);
+          window.scrollTo(0, 0); // Scroll to top when page changes
+        }}
       />
     ));
   };
 
   return (
-    <Flex alignItems="center" justifyContent="center" wrap="nowrap" overflow="hidden" gap={1} mb={4}>
+    <Flex alignItems="center" justifyContent="center" wrap="nowrap" overflow="hidden" gap={1} mb={4} mt={4}>
       <IconButton
         onClick={handlePreviousPage}
         isDisabled={page === 1}
