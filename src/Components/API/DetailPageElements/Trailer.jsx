@@ -13,7 +13,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-const placeholderThumbnail = 'https://placehold.co/640x360';
+const placeholderThumbnail = 'https://placehold.co/640x360?text=-';
 
 const Trailer = ({ trailer, name, title, posterPath }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
