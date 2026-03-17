@@ -18,7 +18,7 @@ function App() {
         <Stack bg="gray.700" >
         <Footer />
         </Stack>
-        
+       
       </Router>
     </div>
   );
